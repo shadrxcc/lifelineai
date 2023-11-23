@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: "Open Sans", sans-serif;
+}
+
+html body {
+  font-family: "Open Sans", sans-serif;
+  max-width: 1440px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  background-image: url(./assets/heartrate.svg);
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-position: top;
+}
+
+.gradient {
+  background: linear-gradient(45deg, #18a1cc, #92d1ff);
+}
+
+.gradient-text {
+  background: var(
+    --main-primary,
+    linear-gradient(134deg, #18a1cc 16.37%, #92d1ff 94.77%)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-reverse {
+  background: linear-gradient(45deg, #92d1ff, #18a1cc);
+}
+
+@layer components {
+  .input-group {
+    @apply mb-4;
+  }
+
+  .input-group label,
+  .input-group input,
+  .input-group select,
+  .input-group textarea {
+    @apply block font-light text-sm text-gray-700 mb-2 duration-500;
+  }
+  .input-group input,
+  .input-group select,
+  .input-group textarea {
+    @apply text-gray-800 w-full bg-gray-100 px-4 py-2 outline-none rounded-md border border-gray-200;
+  }
+
+  .button {
+    @apply text-sm block rounded-lg p-2 w-full text-center mt-8 text-white cursor-pointer duration-500;
+  }
+
+  .button:disabled {
+    @apply cursor-not-allowed bg-gray-400 duration-500;
+  }
+}

@@ -6,6 +6,7 @@ import { VerifyEmail } from "./pages/Verifyemail";
 import { ForgotPassword } from "./pages/ForgotPassword";
 import { ResetLink } from "./pages/ResetLink";
 import { ResetPassword } from "./pages/ResetPassword";
+import Dashboard from "./pages/Dashboard";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,11 @@ const router = createBrowserRouter([
   {
     path: "reset-password",
     element: <ResetPassword/>,
+  },
+
+  {
+    path: "dashboard",
+    element: <Dashboard/>,
   },
 ]);
 

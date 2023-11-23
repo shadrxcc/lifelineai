@@ -61,3 +61,29 @@ html body {
     @apply cursor-not-allowed bg-gray-400 duration-500;
   }
 }
+
+.period {
+  border-radius: var(--corner-radius-80, 8px);
+  background: var(--blue-10, rgba(32, 91, 241, 0.1));
+}
+
+#sidebar {
+  border-right: 1px solid var(--black-10, rgba(0, 0, 0, 0.1));
+  background: var(--white-100, #fff);
+}
+
+
+.credit-card {
+  border-radius: 16px;
+  background: var(--button-main-primary, linear-gradient(134deg, #18A1CC 16.37%, #92D1FF 94.77%));
+}
+
+#credit-btn {
+  border-radius: var(--corner-radius-80, 8px);
+  background: var(--main-secondary, #EDF8FF);
+}
+
+#flex-center {
+  display: flex;
+  align-items: center;
+}

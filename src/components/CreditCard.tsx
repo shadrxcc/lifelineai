@@ -1,15 +1,14 @@
-import React from "react";
+
 
 const CreditCard = ({
   heading,
   subHeading,
-  children,
   className,
   btnText,
 }: {
   heading?: string;
   subHeading?: string;
-  children?: React.ReactNode;
+
   className?: string;
   btnText?: string;
 }) => {

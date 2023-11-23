@@ -12,10 +12,10 @@ html body {
   margin: 0 auto;
   box-sizing: border-box;
   overflow-x: hidden;
-  background-image: url(./assets/heartrate.svg);
+  /* background-image: url(./assets/heartrate.svg);
   background-repeat: no-repeat;
   background-size: auto;
-  background-position: top;
+  background-position: top; */
 }
 
 .gradient {
@@ -45,12 +45,12 @@ html body {
   .input-group input,
   .input-group select,
   .input-group textarea {
-    @apply block font-light text-sm text-gray-700 mb-2 duration-500;
+    @apply block text-sm text-gray-700 mb-2 duration-500;
   }
   .input-group input,
   .input-group select,
   .input-group textarea {
-    @apply text-gray-800 w-full bg-gray-100 px-4 py-2 outline-none rounded-md border border-gray-200;
+    @apply text-[#434343] w-full bg-gray-100 px-4 py-2 outline-none rounded-md border border-gray-200;
   }
 
   .button {

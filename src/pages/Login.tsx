@@ -71,7 +71,7 @@ const Login = () => {
           <form onSubmit={formSubmitHandler}>
             {/*  */}
             <div className="input-group">
-              <label htmlFor="email">Enter your email address*</label>
+              <label htmlFor="email">Email address <span className="text-[#F12052]">*</span></label>
               <input
                 type="email"
                 id="email"
@@ -94,10 +94,14 @@ const Login = () => {
               />
             </div>
             {/*  */}
-            <div className="mt-4 flex items-center justify-between">
+            <div className="mt-5 flex items-center justify-between">
+              <div className="flex gap-x-1.5 items-center">
+                <input type="checkbox" name="remember" id="remember" />
+                <p className="text-sm">Remember me</p>
+              </div>
               <Link
                 to="/forgot-password"
-                className="block text-sm text-center mt-4 text-primary"
+                className="block text-sm text-center text-primary"
               >
                 Forgot Password?
               </Link>

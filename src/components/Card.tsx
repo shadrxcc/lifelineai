@@ -17,7 +17,7 @@ const Card = ({
         <p className='text-2xl md:text-3xl text-gray-900 mb-2 font-semibold'>
           {heading}
         </p>
-        <p className='text-gray-500 text-lg font-light'>{subHeading}</p>
+        <p className='text-[#8C8C8C] text-lg'>{subHeading}</p>
       </div>
 
       {children}

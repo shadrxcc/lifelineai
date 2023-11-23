@@ -88,7 +88,7 @@ const Register = () => {
         >
           <form onSubmit={formSubmitHandler}>
             <div className='input-group'>
-              <label htmlFor='full_name'>Enter your name*</label>
+              <label htmlFor='full_name'>Enter your name <span className="text-[#F12052]"> <span className="text-[#F12052]">*</span></span></label>
               <input
                 type='text'
                 id='full_name'
@@ -99,7 +99,7 @@ const Register = () => {
             </div>
             {/*  */}
             <div className='input-group'>
-              <label htmlFor='email'>Enter your email address*</label>
+              <label htmlFor='email'>Enter your email address <span className="text-[#F12052]">*</span></label>
               <input
                 type='email'
                 id='email'
@@ -129,7 +129,7 @@ const Register = () => {
             </div>
             {/*  */}
             <div className='input-group'>
-              <label htmlFor='password'>Password*</label>
+              <label htmlFor='password'>Password <span className="text-[#F12052]">*</span></label>
               <input
                 type='password'
                 id='password'

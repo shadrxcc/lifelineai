@@ -105,7 +105,7 @@ const MedicalHistory = () => {
 
           <Link
             to='/login'
-            className='block text-sm text-center mt-4 text-primary'
+            className='block text-sm font-semibold text-center mt-4 text-primary'
           >
             Skip for now
           </Link>

@@ -28,7 +28,7 @@ export const ForgotPassword = () => {
           <form onSubmit={sendLink} className="w-full">
             {/*  */}
             <div className="input-group">
-              <label htmlFor="email">Enter your email address*</label>
+              <label htmlFor="email">Email address*</label>
               <input
                 type="email"
                 id="email"
@@ -43,7 +43,7 @@ export const ForgotPassword = () => {
             <div className="mt-4 flex items-center justify-center">
               <Link
                 to="/login"
-                className="block text-sm text-center mt-4 text-primary"
+                className="block font-semibold text-sm text-center mt-4 text-primary"
               >
                 Return to Sign in
               </Link>

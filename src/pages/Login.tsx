@@ -1,14 +1,14 @@
 import axios from "axios";
 import { ChangeEvent, FormEvent, useState } from "react";
 import toast from "react-hot-toast";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Button from "../components/Button";
 import Card from "../components/Card";
 import { BASE_URL, ENDPOINTS } from "../config";
 import PageHeader from "../components/PageHeader";
 
 const Login = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [userData, setUserData] = useState({
@@ -63,7 +63,7 @@ const Login = () => {
     <div className="p-4">
       <PageHeader
         linkText='Sign up'
-        title='Don’t have an account?'
+        title='Don&apos;t have an account?'
         url='/'
       />
       <div className="mt-16">

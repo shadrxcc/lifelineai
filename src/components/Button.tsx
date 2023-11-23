@@ -1,4 +1,3 @@
-import React from 'react';
 import loading_spinner from '/rolling.svg';
 
 const Button = ({

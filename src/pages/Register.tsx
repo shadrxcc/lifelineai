@@ -51,7 +51,7 @@ const Register = () => {
           userData
         );
 
-        const { data } = res;
+        // const { data } = res;
 
         if (res.status === 200 || res.status === 201) {
           console.log(res);

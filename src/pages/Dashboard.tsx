@@ -1,3 +1,4 @@
+import Conversation from "../components/Conversation"
 import SideBar from "../components/SideBar"
 
 const Dashboard = () => {
@@ -6,8 +7,8 @@ const Dashboard = () => {
       <div className=''>
         <SideBar />
       </div>
-      <div className="flex-1 bg-sec  pt-[2rem] md:pl-[5rem] px-4 md:px-[2rem] pb-[3rem]">
-        
+      <div className="flex-1">
+        <Conversation/>
       </div>
     </div>
   )

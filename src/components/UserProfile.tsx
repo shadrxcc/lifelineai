@@ -11,7 +11,7 @@ const UserProfile = ({
 }) => {
   return (
     <div
-      className={`px-4 py-5 rounded bg-white w-[375px] flex flex-col gap-y-5 shadow-lg mx-auto border border-gray-50 ${className}`}
+      className={`px-4 py-5 rounded-xl bg-white w-[375px] flex flex-col gap-y-5 shadow-lg mx-auto border border-gray-50 ${className}`}
     >
       <div className="flex items-center gap-x-4">
         <img src="/pfp.svg" alt="" />

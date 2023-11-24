@@ -15,7 +15,7 @@ export default function ConversationHeader() {
         </div>
       </div>
 
-      <UserProfile className="absolute left-24"
+      <UserProfile className="absolute hidden left-24"
         useremail="Janedoe@gmail.com"
         username="Jane Doe"
         reminder="Drink water"

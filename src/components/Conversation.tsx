@@ -1,11 +1,14 @@
-import ConversationHeader from "./ConversationHeader"
+import ConversationHeader from "./ConversationHeader";
+
 
 function Conversation() {
+
   return (
     <div>
-        <ConversationHeader/>
+
+      <ConversationHeader />
     </div>
-  )
+  );
 }
 
-export default Conversation
+export default Conversation;

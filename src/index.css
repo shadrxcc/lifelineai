@@ -95,3 +95,67 @@ html body {
   background: var(--light-100, #fff);
   backdrop-filter: blur(5px);
 }
+
+#tour-btn {
+  border-radius: 8px;
+  background: var(
+    --main-primary,
+    linear-gradient(134deg, #18a1cc 16.37%, #92d1ff 94.77%)
+  );
+
+  /* Button */
+  box-shadow: 0px 2px 10px 0px rgba(101, 192, 237, 0.5);
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  z-index: 20;
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0.2) 100%
+  );
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  z-index: 30;
+  animation: scale 0.4s ease-in-out forwards;
+  transition: all;
+}
+
+.privacy-policy {
+  padding: 24px;
+  flex-direction: column;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  border-radius: var(--corner-radius-80, 8px);
+  border: 1px solid
+    var(--neutral-stroke-transparent-rest, rgba(255, 255, 255, 0));
+  background: var(--neutral-background-1-rest, #fff);
+  box-shadow: 0px 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+#agree {
+  background: var(
+    --main-primary,
+    linear-gradient(134deg, #18a1cc 16.37%, #92d1ff 94.77%)
+  );
+  box-shadow: 0px 2px 10px 0px rgba(101, 192, 237, 0.5);
+}

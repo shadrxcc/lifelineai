@@ -1,4 +1,5 @@
 import CreditCard from "./CreditCard";
+import TourDialog from "./TourDialog";
 
 const SideBar = () => {
   return (
@@ -12,27 +13,45 @@ const SideBar = () => {
           <img src="/heart-logo.svg" alt="" />
         </div>
 
-        <div className="history flex flex-col gap-y-2">
-          <p className="text-[#595959] text-sm leading-5">History</p>
-          <div className="flex flex-col gap-y-2">
-            <div className="period flex items-center gap-x-1 py-1 px-7">
-              <img src="/clock.svg" alt="" />
-              <p className="text-sm text-[#40A9FF]">This week</p>
-            </div>
-            <div className="prompts flex text-sm text-[#595959] leading-5 flex-col text-center items-end gap-y-3 px-3">
-              <p>I have a headache and....</p>
-              <p>I have a headache and....</p>
-              <p>I have a headache and....</p>
+        <div className="history-wrapper relative">
+          <div className="history flex flex-col gap-y-2">
+            <p className="text-[#595959] text-sm leading-5">History</p>
+            <div className="flex flex-col gap-y-2">
+              <div className="period flex items-center gap-x-1 py-1 px-7">
+                <img src="/clock.svg" alt="" />
+                <p className="text-sm text-[#40A9FF]">This week</p>
+              </div>
+              <div className="prompts flex text-sm text-[#595959] leading-5 flex-col text-center items-end gap-y-3 px-3">
+                <p>I have a headache and....</p>
+                <p>I have a headache and....</p>
+                <p>I have a headache and....</p>
+              </div>
             </div>
           </div>
+
+          <TourDialog step={2}
+            className="absolute z-10 top-7 hidden right-[-27em]"
+            heading="History"
+            subHeading="View, copy, regenerate responses for all prompts from the past week"
+            btnText="Next"
+          />
         </div>
       </div>
 
-      <CreditCard
-        btnText="View article"
-        heading="Malaria: The silent-killer"
-        subHeading="Lorem ipsum dolor sit amet consectetur. Posuere in amet nulla urna nibh tempus. At id."
-      />
+      <div className="relative">
+        <CreditCard
+          btnText="View article"
+          heading="Malaria: The silent-killer"
+          subHeading="Lorem ipsum dolor sit amet consectetur. Posuere in amet nulla urna nibh tempus. At id."
+        />
+
+        <TourDialog step={3}
+          className="absolute hidden top-11 right-[-25em] z-10"
+          heading="Daily Articles"
+          subHeading="Receive daily updates on articles related to your last searched symptom."
+          btnText="Complete"
+        />
+      </div>
 
       <div
         id="actions"

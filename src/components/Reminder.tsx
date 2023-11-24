@@ -18,8 +18,8 @@ const Reminder = () => {
         </span>
         <div className="flex justify-end w-full">
           <div className="flex items-center gap-x-2">
-            <button className="px-6 py-2 bg-[#EDF8FF] leading-4 text-xs font-semibold rounded-lg gradient-text text-[#EDF8FF]">
-              Cancel
+            <button id="cancel" className="px-6 py-2 bg-[#EDF8FF] leading-4 text-xs font-semibold rounded-lg gradient-text text-[#EDF8FF]">
+              <p id="cancel-text">Cancel</p>
             </button>
 
             <button

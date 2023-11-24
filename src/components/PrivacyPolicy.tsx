@@ -25,11 +25,11 @@ const PrivacyPolicy: React.FC<PrivacyPolicyProps> = (props) => {
             >
               Agree
             </button>
-            <button
+            <button id="cancel"
               onClick={props.onClose}
               className="px-6 py-2 bg-[#EDF8FF] leading-4 text-xs font-semibold rounded-lg gradient-text text-[#EDF8FF]"
             >
-              Cancel
+              <p id="cancel-text">Cancel</p>
             </button>
           </div>
         </div>

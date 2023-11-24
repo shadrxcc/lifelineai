@@ -1,11 +1,11 @@
 import ModalCard from "./ModalCard";
 
-const Confirmation = () => {
+const SaveConfirmation = () => {
   return (
-    <ModalCard className="gap-y-3" heading="Confirmation">
+    <ModalCard className="gap-y-3" heading="Save Confirmation">
       <p className="text-[#242424] text-base leading-6">
-        You are about to clear all your recent conversations. This action cannot
-        be undone. Are you sure?
+        You are about to save changes made to your medical history, Changes
+        saved cannot be undone. Are you sure of this action?
       </p>
 
       <div className="flex justify-end w-full">
@@ -25,4 +25,4 @@ const Confirmation = () => {
   );
 };
 
-export default Confirmation;
+export default SaveConfirmation;

@@ -1,7 +1,7 @@
-import Confirmation from "./Confirmation";
+// import Confirmation from "./Confirmation";
 import ConversationHeader from "./ConversationHeader";
-import FeedBack from "./FeedBack";
-import SaveConfirmation from "./SaveConfirmation";
+// import FeedBack from "./FeedBack";
+// import SaveConfirmation from "./SaveConfirmation";
 // import Reminder from "./Reminder";
 
 
@@ -11,9 +11,9 @@ function Conversation() {
     <div>
 
       <ConversationHeader />
-      <Confirmation/>
+      {/* <Confirmation/>
       <SaveConfirmation/>
-      <FeedBack/>
+      <FeedBack/> */}
       {/* <Reminder/> */}
     </div>
   );

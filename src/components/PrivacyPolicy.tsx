@@ -20,12 +20,14 @@ const PrivacyPolicy: React.FC<PrivacyPolicyProps> = (props) => {
         <div className="flex justify-end w-full">
           <div className="flex items-center gap-x-2">
             <button
+              onClick={props.onClose}
               id="agree"
               className="px-6 rounded-lg text-white text-xs font-semibold leading-4 py-2"
             >
               Agree
             </button>
-            <button id="cancel"
+            <button
+              id="cancel"
               onClick={props.onClose}
               className="px-6 py-2 bg-[#EDF8FF] leading-4 text-xs font-semibold rounded-lg gradient-text text-[#EDF8FF]"
             >

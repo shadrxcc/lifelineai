@@ -1,4 +1,5 @@
 import TourDialog from "./TourDialog";
+import UserProfile from "./UserProfile";
 
 export default function ConversationHeader() {
   return (
@@ -13,6 +14,12 @@ export default function ConversationHeader() {
           </span>
         </div>
       </div>
+
+      <UserProfile className="absolute left-24"
+        useremail="Janedoe@gmail.com"
+        username="Jane Doe"
+        reminder="Drink water"
+      />
 
       <TourDialog
         step={1}

@@ -144,7 +144,7 @@ html body {
   flex-direction: column;
   display: flex;
   align-items: flex-start;
-  gap: 12px;
+  gap: 20px;
   border-radius: var(--corner-radius-80, 8px);
   border: 1px solid
     var(--neutral-stroke-transparent-rest, rgba(255, 255, 255, 0));

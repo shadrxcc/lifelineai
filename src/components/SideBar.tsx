@@ -5,7 +5,7 @@ const SideBar = () => {
   return (
     <div
       id="sidebar"
-      className="h-screen gap-y-8 flex flex-col justify-between w-[30%] lg:w-[286px] py-8 px-5"
+      className="h-screen gap-y-8 hidden sm:flex flex-col justify-between w-[30%] lg:w-[286px] py-8 px-5"
     >
       <div>
         <div className="flex items-center gap-x-2">

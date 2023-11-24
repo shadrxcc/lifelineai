@@ -1,4 +1,6 @@
+import Confirmation from "./Confirmation";
 import ConversationHeader from "./ConversationHeader";
+// import Reminder from "./Reminder";
 
 
 function Conversation() {
@@ -7,6 +9,8 @@ function Conversation() {
     <div>
 
       <ConversationHeader />
+      <Confirmation/>
+      {/* <Reminder/> */}
     </div>
   );
 }

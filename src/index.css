@@ -139,12 +139,12 @@ html body {
   transition: all;
 }
 
-.privacy-policy {
+.modal-card {
   padding: 24px;
   flex-direction: column;
   display: flex;
+  margin: auto;
   align-items: flex-start;
-  gap: 20px;
   border-radius: var(--corner-radius-80, 8px);
   border: 1px solid
     var(--neutral-stroke-transparent-rest, rgba(255, 255, 255, 0));

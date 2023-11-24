@@ -16,9 +16,9 @@ const Dashboard = () => {
     <>
       {privacyPolicy && <PrivacyPolicy onClose={closePrivacy} />}
       <div className="flex w-full ">
-        <div className="">
+        
           <SideBar />
-        </div>
+     
         <div className="flex-1">
           <Conversation />
         </div>

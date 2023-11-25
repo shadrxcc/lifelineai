@@ -24,16 +24,19 @@ const AuthProvider: React.FC<Props> = ({ children }) => {
     setUser(user_info);
     setIsLoggedIn(true);
     localStorage.setItem("userInfo", JSON.stringify(user_info));
+    localStorage.setItem("loginStatus", JSON.stringify(true))
   };
 
   useEffect(() => {
     const storedUserInfo = localStorage.getItem("userInfo");
-    if (storedUserInfo) {
+    const userStatus = localStorage.getItem("loginStatus")
+    if (storedUserInfo && userStatus) {
       const parsedUserInfo = JSON.parse(storedUserInfo) as userInfoType;
+      const status = JSON.parse(userStatus) as boolean
       setUser(parsedUserInfo);
-      setIsLoggedIn(true);
+      setIsLoggedIn(status);
     }
-  }, []);
+  }, [isLoggedIn]);
 
   const logout = () => {
     setUser(null);

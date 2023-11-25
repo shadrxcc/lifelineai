@@ -14,6 +14,7 @@ const Dashboard = () => {
   const navigate = useNavigate()
 
   const {isLoggedIn} = useAuth()
+  console.log(isLoggedIn)
 
   useEffect(() => {
     if (!isLoggedIn) {

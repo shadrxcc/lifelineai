@@ -63,7 +63,7 @@ const Register = () => {
             preferred_language: 'en',
           });
 
-          navigate('/medical-history');
+          navigate('/verify-email');
         }
         setIsLoading(false);
       } catch (error) {

@@ -5,22 +5,59 @@ import PrivacyPolicy from "../components/PrivacyPolicy";
 
 const Dashboard = () => {
   const [privacyPolicy, setPrivacyPolicy] = useState(true);
-  // const showPrivacy = () => {
-  //   setPrivacyPolicy(true);
-  // };
+  const [tour1, setTour1] = useState(false);
+  const [tour2, setTour2] = useState(false);
+  const [tour3, setTour3] = useState(false);
 
   const closePrivacy = () => {
     setPrivacyPolicy(false);
   };
+
+  const startGuide = () => {
+    setPrivacyPolicy(false);
+    setTour1(true);
+  };
+
+  const moveToStep2 = () => {
+    setTour1(false);
+    setTour2(true);
+  };
+
+  const moveToStep3 = () => {
+    setTour2(false);
+    setTour3(true);
+  };
+
+  const Finish = () => {
+    setTour3(false);
+  };
+
+  const closeTour = () => {
+    setTour1(false);
+    setTour2(false);
+    setTour3(false);
+  };
+
   return (
     <>
-      {privacyPolicy && <PrivacyPolicy onClose={closePrivacy} />}
+      {privacyPolicy && (
+        <PrivacyPolicy startGuide={startGuide} onClose={closePrivacy} />
+      )}
       <div className="flex w-full ">
-        
-          <SideBar />
-     
+        <SideBar
+          CloseTour={closeTour}
+          step2={moveToStep3}
+          tour2={tour2}
+          tour3={tour3}
+          finish={Finish}
+        />
+
         <div className="flex-1">
-          <Conversation />
+          <Conversation
+            CloseTour={closeTour}
+            step1={moveToStep2}
+            tour1={tour1}
+          />
         </div>
       </div>
     </>

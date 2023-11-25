@@ -1,7 +1,24 @@
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 import CreditCard from "./CreditCard";
 import TourDialog from "./TourDialog";
 
-const SideBar = () => {
+const SideBar = ({
+  step2,
+  finish,
+  tour2,
+  tour3,
+  CloseTour
+}: {
+  step2: () => void;
+  finish: () => void;
+  tour2: Boolean;
+  tour3: Boolean;
+  CloseTour: () => void;
+}) => {
+  const { logout } = useAuth();
+  const navigate = useNavigate();
+
   return (
     <div
       id="sidebar"
@@ -29,12 +46,16 @@ const SideBar = () => {
             </div>
           </div>
 
-          <TourDialog step={2}
-            className="absolute z-10 top-7 hidden right-[-27em]"
-            heading="History"
-            subHeading="View, copy, regenerate responses for all prompts from the past week"
-            btnText="Next"
-          />
+          {tour2 ? (
+            <TourDialog CloseTour={CloseTour}
+              step={2}
+              className="absolute z-10 top-7 right-[-27em]"
+              heading="History"
+              subHeading="View, copy, regenerate responses for all prompts from the past week"
+              btnText="Next"
+              Next={step2}
+            />
+          ) : null}
         </div>
       </div>
 
@@ -45,12 +66,16 @@ const SideBar = () => {
           subHeading="Lorem ipsum dolor sit amet consectetur. Posuere in amet nulla urna nibh tempus. At id."
         />
 
-        <TourDialog step={3}
-          className="absolute hidden top-11 right-[-25em] z-10"
-          heading="Daily Articles"
-          subHeading="Receive daily updates on articles related to your last searched symptom."
-          btnText="Complete"
-        />
+        {tour3 ? (
+          <TourDialog CloseTour={CloseTour}
+            step={3}
+            className="absolute top-11 right-[-25em] z-10"
+            heading="Daily Articles"
+            subHeading="Receive daily updates on articles related to your last searched symptom."
+            btnText="Complete"
+            Next={finish}
+          />
+        ) : null}
       </div>
 
       <div
@@ -62,7 +87,14 @@ const SideBar = () => {
           <p>Clear conversations</p>
         </div>
 
-        <div id="flex-center" className="gap-x-3 p-3">
+        <div
+          onClick={() => {
+            logout;
+            navigate("/login");
+          }}
+          id="flex-center"
+          className="gap-x-3 cursor-pointer p-3"
+        >
           <img src="/logout.svg" alt="" />
           <p>Log out</p>
         </div>

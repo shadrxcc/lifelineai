@@ -3,13 +3,17 @@ const TourDialog = ({
   subHeading,
   className,
   btnText,
+  Next,
+  CloseTour,
   step,
 }: {
   heading?: string;
   subHeading?: string;
   step: string | number;
   className?: string;
+  Next: () => void;
   btnText?: string;
+  CloseTour: () => void;
 }) => {
   return (
     <div
@@ -20,7 +24,7 @@ const TourDialog = ({
           <p className="text-xl text-[#242424] leading-7 font-semibold">
             {heading}
           </p>
-          <img src="/dismiss.svg" alt="" />
+          <button onClick={CloseTour}><img src="/dismiss.svg" alt="" /></button>
         </div>
 
         <div>
@@ -30,7 +34,7 @@ const TourDialog = ({
 
       <div className="flex items-center justify-between">
         <p className="text-sm text-[#616161] leading-5">{step} of 3</p>{" "}
-        <button
+        <button onClick={Next}
           id="tour-btn"
           className="flex border text-white leading-4 items-center py-2 px-6 font-semibold text-xs"
         >

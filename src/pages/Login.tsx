@@ -1,17 +1,28 @@
 import axios from "axios";
 import { ChangeEvent, FormEvent, useState } from "react";
 import toast from "react-hot-toast";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 import Card from "../components/Card";
 import { BASE_URL, ENDPOINTS } from "../config";
 import PageHeader from "../components/PageHeader";
+import { LoginDataType } from "../@types/index.d";
+import { useAuth } from "../context/AuthContext";
 
 const Login = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
+  const authContext = useAuth();
+
+  // Check if authContext is defined
+  if (!authContext) {
+    // Handle the case where authContext is undefined
+    return null;
+  }
+
+  const { login } = authContext;
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [userData, setUserData] = useState({
+  const [userData, setUserData] = useState<LoginDataType>({
     email: "",
     password: "",
   });
@@ -40,13 +51,23 @@ const Login = () => {
           userData
         );
 
-        const { data } = res;
+        // const { data } = res;
 
-        console.log(data);
+        // console.log(data);
 
-        // if (res.status === 200 || res.status === 201) {
-        //   navigate('/dashboard');
-        // }
+        if (res.status === 200 || res.status === 201) {
+          const { user_info } = res.data;
+
+          login(user_info);
+          console.log(res.data.user_info);
+
+          localStorage.setItem("userInfo", JSON.stringify(user_info));
+          setUserData({
+            email: "",
+            password: "",
+          });
+          navigate("/dashboard");
+        }
 
         setIsLoading(false);
       } catch (error: any) {
@@ -61,17 +82,15 @@ const Login = () => {
 
   return (
     <div className="p-4">
-      <PageHeader
-        linkText='Sign up'
-        title='Don&apos;t have an account?'
-        url='/'
-      />
+      <PageHeader linkText="Sign up" title="Don't have an account?" url="/" />
       <div className="mt-16">
         <Card heading="Welcome Back!" subHeading="Sign in to your account">
           <form onSubmit={formSubmitHandler}>
             {/*  */}
             <div className="input-group">
-              <label htmlFor="email">Email address <span className="text-[#F12052]">*</span></label>
+              <label htmlFor="email">
+                Email address <span className="text-[#F12052]">*</span>
+              </label>
               <input
                 type="email"
                 id="email"

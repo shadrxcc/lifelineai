@@ -187,3 +187,9 @@ html body {
   bottom: 0;
   background-color: #fff; /* Set background color if needed */
 }
+
+#convo {
+  background-image: url(/heart-rate-grey.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}

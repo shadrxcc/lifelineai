@@ -7,6 +7,9 @@ import { ForgotPassword } from "./pages/ForgotPassword";
 import { ResetLink } from "./pages/ResetLink";
 import { ResetPassword } from "./pages/ResetPassword";
 import Dashboard from "./pages/Dashboard";
+import { CheckAuth } from "./utils/auth";
+
+
 
 const router = createBrowserRouter([
   {

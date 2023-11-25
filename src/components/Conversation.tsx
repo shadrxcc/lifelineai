@@ -5,20 +5,23 @@ import InputMessage from "./InputMessage";
 // import SaveConfirmation from "./SaveConfirmation";
 // import Reminder from "./Reminder";
 
-function Conversation() {
+interface ConversationProps {
+  tour1: boolean;
+  step1: () => void;
+  CloseTour: () => void;
+}
+
+function Conversation({ tour1, step1, CloseTour }: ConversationProps) {
   return (
     <>
-    <div className="flex flex-col justify-between h-screen">
-      <ConversationHeader />
-      {/* <Confirmation/>
+      <div id="convo" className="flex flex-col justify-between h-screen">
+        <ConversationHeader CloseTour={CloseTour} step1={step1} tour1={tour1} />
+        {/* <Confirmation/>
       <SaveConfirmation/>
       <FeedBack/> */}
-      {/* <Reminder/> */}
-      <InputMessage />
-    </div>
-        
-
-    
+        {/* <Reminder/> */}
+        <InputMessage />
+      </div>
     </>
   );
 }

@@ -8,12 +8,14 @@ const SideBar = ({
   tour2,
   tour3,
   CloseTour,
+  clearchat,
 }: {
   step2: () => void;
   finish: () => void;
   tour2: Boolean;
   tour3: Boolean;
   CloseTour: () => void;
+  clearchat: () => void;
 }) => {
   const { logout } = useAuth();
 
@@ -82,7 +84,11 @@ const SideBar = ({
         id="actions"
         className="text-sm flex flex-col gap-y-1 text-[#1C1C1C]"
       >
-        <div id="flex-center" className="gap-x-3 p-3">
+        <div
+          onClick={clearchat}
+          id="flex-center"
+          className="gap-x-3 cursor-pointer p-3"
+        >
           <img src="/trash.svg" alt="" />
           <p>Clear conversations</p>
         </div>

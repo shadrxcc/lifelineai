@@ -2,6 +2,7 @@ import Conversation from "../components/Conversation";
 import { useState } from "react";
 import SideBar from "../components/SideBar";
 import PrivacyPolicy from "../components/PrivacyPolicy";
+import Confirmation from "../components/Confirmation";
 // import { useAuth } from "../context/AuthContext";
 // import { useNavigate } from "react-router-dom";
 
@@ -10,6 +11,16 @@ const Dashboard = () => {
   const [tour1, setTour1] = useState(false);
   const [tour2, setTour2] = useState(false);
   const [tour3, setTour3] = useState(false);
+
+  const [clearChat, setClearChat] = useState(false);
+
+  const clearModalOpen = () => {
+    setClearChat(true);
+  };
+
+  const clearModalClose = () => {
+    setClearChat(false);
+  };
 
   // const navigate = useNavigate()
 
@@ -56,8 +67,11 @@ const Dashboard = () => {
       {privacyPolicy && (
         <PrivacyPolicy startGuide={startGuide} onClose={closePrivacy} />
       )}
+
+      {clearChat ? <Confirmation onClose={clearModalClose} /> : null}
       <div className="flex w-full ">
         <SideBar
+          clearchat={clearModalOpen}
           CloseTour={closeTour}
           step2={moveToStep3}
           tour2={tour2}

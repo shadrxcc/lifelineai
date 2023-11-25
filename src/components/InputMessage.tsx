@@ -41,7 +41,7 @@ const InputMessage = ({
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
               placeholder="Tell me your symptom"
-              className="text-[#919191] bg-transparent outline-none text-base w-full"
+              className="text-[#919191] bg-transparent active:bg-transparent outline-none text-base w-full"
               id="message"
             />
             <button>

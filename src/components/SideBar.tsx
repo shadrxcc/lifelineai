@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import CreditCard from "./CreditCard";
 import TourDialog from "./TourDialog";
@@ -17,7 +16,6 @@ const SideBar = ({
   CloseTour: () => void;
 }) => {
   const { logout } = useAuth();
-  const navigate = useNavigate();
 
   return (
     <div

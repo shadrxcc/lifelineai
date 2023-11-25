@@ -1,9 +1,9 @@
 import Conversation from "../components/Conversation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import SideBar from "../components/SideBar";
 import PrivacyPolicy from "../components/PrivacyPolicy";
-import { useAuth } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+// import { useAuth } from "../context/AuthContext";
+// import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
   const [privacyPolicy, setPrivacyPolicy] = useState(true);
@@ -11,16 +11,16 @@ const Dashboard = () => {
   const [tour2, setTour2] = useState(false);
   const [tour3, setTour3] = useState(false);
 
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
 
-  const {isLoggedIn} = useAuth()
-  console.log(isLoggedIn)
+  // const {isLoggedIn} = useAuth()
+  // console.log(isLoggedIn)
 
-  useEffect(() => {
-    if (!isLoggedIn) {
-      navigate('/login');
-    }
-  }, [isLoggedIn, navigate]);
+  // useEffect(() => {
+  //   if (!isLoggedIn) {
+  //     navigate('/login');
+  //   }
+  // }, [isLoggedIn, navigate]);
 
   const closePrivacy = () => {
     setPrivacyPolicy(false);

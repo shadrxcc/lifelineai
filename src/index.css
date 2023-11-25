@@ -132,7 +132,11 @@ html body {
   justify-content: center;
   height: 100vh;
   z-index: 20;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.05) 100%);
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.05) 0%,
+    rgba(0, 0, 0, 0.05) 100%
+  );
 }
 
 .modal {
@@ -219,5 +223,24 @@ html body {
   100% {
     opacity: 1%;
     transform: translateY(1%);
+  }
+}
+
+#bot-chat {
+  border-radius: var(--corner-radius-80, 8px);
+  background: var(--blue-10, rgba(32, 91, 241, 0.1));
+}
+
+#loading {
+  animation: loader 0.5s ease-in-out infinite;
+}
+
+@keyframes loader {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
   }
 }

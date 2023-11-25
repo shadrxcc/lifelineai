@@ -36,6 +36,7 @@ const InputMessage = ({
             <img src="/attachment.svg" alt="" />
             <input
               type="text"
+              required
               name="message"
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}

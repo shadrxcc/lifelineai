@@ -8,7 +8,7 @@ const SideBar = ({
   finish,
   tour2,
   tour3,
-  CloseTour
+  CloseTour,
 }: {
   step2: () => void;
   finish: () => void;
@@ -47,7 +47,8 @@ const SideBar = ({
           </div>
 
           {tour2 ? (
-            <TourDialog CloseTour={CloseTour}
+            <TourDialog
+              CloseTour={CloseTour}
               step={2}
               className="absolute z-10 top-7 right-[-27em]"
               heading="History"
@@ -67,7 +68,8 @@ const SideBar = ({
         />
 
         {tour3 ? (
-          <TourDialog CloseTour={CloseTour}
+          <TourDialog
+            CloseTour={CloseTour}
             step={3}
             className="absolute top-11 right-[-25em] z-10"
             heading="Daily Articles"
@@ -88,10 +90,7 @@ const SideBar = ({
         </div>
 
         <div
-          onClick={() => {
-            logout;
-            navigate("/login");
-          }}
+          onClick={logout}
           id="flex-center"
           className="gap-x-3 cursor-pointer p-3"
         >

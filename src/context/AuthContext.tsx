@@ -1,6 +1,6 @@
-// AuthContext.tsx
 import React, { createContext, useContext, useEffect, useState } from "react";
-import {  userInfoType } from "../@types/index.d";
+import { userInfoType } from "../@types/index.d";
+import { useNavigate } from "react-router-dom";
 
 interface AuthContextType {
   user: userInfoType | null;
@@ -18,6 +18,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 const AuthProvider: React.FC<Props> = ({ children }) => {
   const [user, setUser] = useState<userInfoType | null>(null);
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   const login = (user_info: userInfoType) => {
     setUser(user_info);
@@ -38,6 +39,7 @@ const AuthProvider: React.FC<Props> = ({ children }) => {
     setUser(null);
     setIsLoggedIn(false);
     localStorage.removeItem("userInfo");
+    navigate(`/login`);
   };
 
   return (

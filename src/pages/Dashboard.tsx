@@ -1,13 +1,25 @@
 import Conversation from "../components/Conversation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SideBar from "../components/SideBar";
 import PrivacyPolicy from "../components/PrivacyPolicy";
+import { useAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
   const [privacyPolicy, setPrivacyPolicy] = useState(true);
   const [tour1, setTour1] = useState(false);
   const [tour2, setTour2] = useState(false);
   const [tour3, setTour3] = useState(false);
+
+  const navigate = useNavigate()
+
+  const {isLoggedIn} = useAuth()
+
+  useEffect(() => {
+    if (!isLoggedIn) {
+      navigate('/login');
+    }
+  }, [isLoggedIn, navigate]);
 
   const closePrivacy = () => {
     setPrivacyPolicy(false);

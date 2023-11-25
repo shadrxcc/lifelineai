@@ -123,6 +123,18 @@ html body {
   );
 }
 
+.backdrop-tour {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  z-index: 20;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.05) 100%);
+}
+
 .modal {
   position: fixed;
   top: 0;
@@ -192,4 +204,20 @@ html body {
   background-image: url(/heart-rate-grey.svg);
   background-repeat: no-repeat;
   background-position: center;
+}
+
+.tour-dialog {
+  animation: tour 0.2s ease-in-out;
+}
+
+@keyframes tour {
+  0% {
+    opacity: 0;
+    transform: translateY(-1%);
+  }
+
+  100% {
+    opacity: 1%;
+    transform: translateY(1%);
+  }
 }

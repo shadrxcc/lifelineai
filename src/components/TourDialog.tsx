@@ -17,7 +17,7 @@ const TourDialog = ({
 }) => {
   return (
     <div
-      className={`p-4 rounded bg-white w-[391px] flex flex-col gap-y-4 shadow-lg mx-auto border border-gray-50 ${className}`}
+      className={`p-4 tour-dialog rounded bg-white w-[90%] sm:w-[391px] flex flex-col gap-y-4 shadow-lg mx-auto border border-gray-50 ${className}`}
     >
       <div className="flex flex-col gap-y-3.5">
         <div className="flex items-center justify-between">

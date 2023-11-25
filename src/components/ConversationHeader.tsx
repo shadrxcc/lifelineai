@@ -54,7 +54,7 @@ const ConversationHeader: React.FC<ConversationHeaderProps> = ({ tour1, step1, C
 
       {tour1 ? <TourDialog CloseTour={CloseTour} Next={step1}
         step={1}
-        className={`absolute top-14 left-48 z-10`}
+        className={`absolute top-20 lg:top-14 sm:left-30 lg:left-44 z-10`}
         heading="Profile"
         subHeading="Manage your profile information and medical history."
         btnText="Next"

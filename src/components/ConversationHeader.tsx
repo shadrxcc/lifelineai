@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import TourDialog from "./TourDialog";
 import UserProfile from "./UserProfile";
+import UserPfp from "./UserPfp";
+import { getInitials } from "../utils/UserInitials";
 
 interface ConversationHeaderProps {
   tour1: boolean;
@@ -23,7 +25,6 @@ const ConversationHeader: React.FC<ConversationHeaderProps> = ({ tour1, step1, C
   }
 
   const { user } = authContext;
-  console.log(user);
 
   return (
     <div id="convo-header" className="px-4 sm:px-10 relative py-6">
@@ -31,7 +32,7 @@ const ConversationHeader: React.FC<ConversationHeaderProps> = ({ tour1, step1, C
         onClick={profileShow}
         className="flex cursor-pointer gap-x-3 items-center"
       >
-        <img src="/pfp.svg" alt="" />
+        <UserPfp name={getInitials({ name: user ? user.full_name : "" })}/>
         <div className="flex flex-col gap-y-1">
           <p className="text-lg leading-5">
             {user ? user.full_name : "Jane Doe"}
@@ -42,6 +43,8 @@ const ConversationHeader: React.FC<ConversationHeaderProps> = ({ tour1, step1, C
           </span>
         </div>
       </div>
+
+      
 
       {showProfile ? (
         <UserProfile

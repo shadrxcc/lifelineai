@@ -1,4 +1,4 @@
-import loading_spinner from '/rolling.svg';
+import loading_spinner from "/rolling.svg";
 
 const Button = ({
   title,
@@ -9,15 +9,17 @@ const Button = ({
 }) => {
   return (
     <button
-      type='submit'
+      type="submit"
       className={`button flex items-center justify-center ${
-        isLoading ? '' : 'gradient'
+        isLoading ? "" : "gradient"
       }`}
       disabled={isLoading}
     >
-      {!isLoading && <span className='p-3 text-base font-semibold'>{title}</span>}
+      {!isLoading && (
+        <span className="p-3 text-base font-semibold">{title}</span>
+      )}
       {isLoading && (
-        <img src={loading_spinner} alt='Loding spinner' className='w-12' />
+        <img src={loading_spinner} alt="Loding spinner" className="w-12" />
       )}
     </button>
   );

@@ -12,7 +12,11 @@ export const VerifyEmail = () => {
       />
 
       <div className="mt-16 relative">
-      <img className="absolute -top-24 right-0 lg:right-28 xl:right-64" src="/heartrate.svg" alt="" />
+        <img
+          className="absolute -top-24 right-0 lg:right-28 xl:right-64"
+          src="/heartrate.svg"
+          alt=""
+        />
         <Card className="flex absolute w-full left-0 right-0 flex-col gap-y-[48px] items-center">
           <img src="/email.svg" alt="" />
           <div className="flex flex-col gap-y-3">
@@ -26,8 +30,6 @@ export const VerifyEmail = () => {
               <span>Or</span>
               <div className="flex gradient-text text-xs font-semibold  gap-x-5">
                 <p>Resend Link</p>
-                <p>/</p>
-                <p>Change Email address</p>
               </div>
             </div>
           </div>

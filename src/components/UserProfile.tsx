@@ -22,12 +22,12 @@ const UserProfile = ({
         <div className="flex flex-col gap-y-0.5">
           <p className="text-lg font-semibold leading-6">{username}</p>
           <p className="text-sm leading-5 text-[#616161]">{useremail}</p>
-          <span className="flex items-center gap-x-2">
+          {/* <span className="flex items-center gap-x-2">
             <p id="cancel-text" className="text-sm font-normal leading-5">
               View medical history
             </p>
             <img src="/chevron-right.svg" alt="" />
-          </span>
+          </span> */}
         </div>
       </div>
 

@@ -26,8 +26,6 @@ export const ResetLink = () => {
               <span>Or</span>
               <div className="flex gradient-text text-xs font-semibold  gap-x-5">
                 <p>Resend Link</p>
-                <p>/</p>
-                <p>Change Email address</p>
               </div>
             </div>
           </div>

@@ -154,13 +154,6 @@ const Register = () => {
             {/*  */}
             <Button title="Get Started" isLoading={isLoading} />
           </form>
-
-          <div
-            className={`mt-8 mx-auto flex items-center justify-center gap-2`}
-          >
-            <div className="h-6 w-6 bg-gray-400 rounded-full"></div>
-            <div className="h-4 w-4 bg-gray-200 rounded-full"></div>
-          </div>
         </Card>
       </div>
     </div>

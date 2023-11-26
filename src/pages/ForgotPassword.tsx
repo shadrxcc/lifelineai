@@ -19,11 +19,12 @@ export const ForgotPassword = () => {
         url="/login"
       />
 
-      <div className="mt-5">
+      <div className="mt-16 relative">
+      <img className="absolute -top-24 right-64" src="/heartrate.svg" alt="" />
         <Card
           heading="Reset Password"
           subHeading="Enter the email address associated with this account, we will send you a link to reset your password."
-          className="flex flex-col items-center"
+          className="flex absolute w-full left-0 right-0 flex-col items-center"
         >
           <form onSubmit={sendLink} className="w-full">
             {/*  */}

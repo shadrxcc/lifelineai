@@ -20,10 +20,11 @@ export const ResetPassword = () => {
         url="/login"
       />
 
-      <div className="mt-5">
+      <div className="mt-16 relative">
+      <img className="absolute -top-24 right-0 lg:right-28 xl:right-64" src="/heartrate.svg" alt="" />
         <Card
           heading="Reset Password"
-          className="flex flex-col items-center"
+          className="flex flex-col items-center absolute w-full left-0 right-0"
         >
           <form className="w-full">
             {/*  */}

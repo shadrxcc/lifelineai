@@ -83,8 +83,13 @@ const Login = () => {
   return (
     <div className="p-4">
       <PageHeader linkText="Sign up" title="Don't have an account?" url="/" />
-      <div className="mt-16">
-        <Card heading="Welcome Back!" subHeading="Sign in to your account">
+      <div className="mt-16 relative bg-center">
+      <img className="absolute -top-24 right-0 lg:right-28 xl:right-64" src="/heartrate.svg" alt="" />
+        <Card
+          className="absolute w-full left-0 right-0"
+          heading="Welcome Back!"
+          subHeading="Sign in to your account"
+        >
           <form onSubmit={formSubmitHandler}>
             {/*  */}
             <div className="input-group">

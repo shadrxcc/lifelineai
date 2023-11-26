@@ -12,7 +12,7 @@ const Card = ({
   className?: string
 }) => {
   return (
-    <div className={`p-8 rounded-xl shadow-lg max-w-xl mx-auto border border-gray-50 ${className}`}>
+    <div id='card' className={`p-8 rounded-xl bg-white shadow-lg max-w-xl mx-auto border border-gray-50 ${className}`}>
       <div className='mb-8'>
         <p className='text-2xl md:text-3xl text-gray-900 mb-2 font-semibold'>
           {heading}

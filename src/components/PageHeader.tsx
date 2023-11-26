@@ -10,7 +10,7 @@ const PageHeader = ({
   url: string;
 }) => {
   return (
-    <div className='flex items-center justify-end gap-4 py-8'>
+    <div className='flex items-center justify-end gap-4 py-2.5'>
       <p className='font-semibold'>{title}</p>
 
       <Link

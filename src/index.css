@@ -244,3 +244,9 @@ html body {
     transform: rotate(360deg);
   }
 }
+
+.ecg-background {
+  background-image: url(/public/ECG.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}

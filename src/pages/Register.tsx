@@ -82,8 +82,9 @@ const Register = () => {
         url="/login"
       />
 
-      <div className="mt-16">
-        <Card
+      <div className="mt-16 relative">
+      <img className="absolute -top-24 right-0 lg:right-28 xl:right-64" src="/heartrate.svg" alt="" />
+        <Card className="absolute w-full left-0 right-0"
           heading="Let's get to know you!"
           subHeading="Please provide your personal details so we can personalize your experience."
         >

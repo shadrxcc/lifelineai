@@ -47,7 +47,7 @@ const ConversationHeader: React.FC<ConversationHeaderProps> = ({ tour1, step1, C
       
 
       {showProfile ? (
-        <UserProfile
+        <UserProfile name={getInitials({ name: user ? user.full_name : "" })}
           className="absolute left-24"
           useremail={user ? user.email : ""}
           username={user ? user.full_name : "Jane Doe"}

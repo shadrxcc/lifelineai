@@ -12,10 +12,7 @@ html body {
   margin: 0 auto;
   box-sizing: border-box;
   overflow-x: hidden;
-  /* background-image: url(./assets/heartrate.svg);
-  background-repeat: no-repeat;
-  background-size: auto;
-  background-position: top; */
+  overflow-y: hidden;
 }
 
 .gradient {
@@ -249,4 +246,12 @@ html body {
   background-image: url(/public/ECG.svg);
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.hide-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }

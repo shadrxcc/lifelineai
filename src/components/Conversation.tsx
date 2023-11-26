@@ -70,7 +70,7 @@ function Conversation({ tour1, step1, CloseTour }: ConversationProps) {
       <SaveConfirmation/>
       <FeedBack/> */}
         {/* <Reminder/> */}
-        <div className="flex-grow px-4 sm:px-6 lg:px-20 py-3 overflow-y-auto">
+        <div className="flex-grow hide-scrollbar px-4 sm:px-6 lg:px-20 py-3 overflow-y-auto">
           {chatLog.map((message, index) => (
             <div className="flex flex-col my-6 mx-auto gap-y-6" key={index}>
               {message.type === "user" ? (

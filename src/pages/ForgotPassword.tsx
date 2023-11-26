@@ -20,7 +20,7 @@ export const ForgotPassword = () => {
       />
 
       <div className="mt-16 relative">
-      <img className="absolute -top-24 right-64" src="/heartrate.svg" alt="" />
+      <img className="absolute -top-24 right-0 lg:right-28 xl:right-64" src="/heartrate.svg" alt="" />
         <Card
           heading="Reset Password"
           subHeading="Enter the email address associated with this account, we will send you a link to reset your password."

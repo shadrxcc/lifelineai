@@ -32,10 +32,10 @@ const ConversationHeader: React.FC<ConversationHeaderProps> = ({ tour1, step1, C
         onClick={profileShow}
         className="flex cursor-pointer gap-x-3 items-center"
       >
-        <UserPfp name={getInitials({ name: user ? user.full_name : "" })}/>
+        <UserPfp name={getInitials({ name: user ? user.full_name : "G" })}/>
         <div className="flex flex-col gap-y-1">
           <p className="text-lg leading-5">
-            {user ? user.full_name : "Jane Doe"}
+            {user ? user.full_name : "Guest"}
           </p>
           <span className="flex items-center gap-x-1">
             <img src="/active.svg" alt="" />
@@ -47,10 +47,10 @@ const ConversationHeader: React.FC<ConversationHeaderProps> = ({ tour1, step1, C
       
 
       {showProfile ? (
-        <UserProfile name={getInitials({ name: user ? user.full_name : "" })}
+        <UserProfile name={getInitials({ name: user ? user.full_name : "G" })}
           className="absolute left-24"
           useremail={user ? user.email : ""}
-          username={user ? user.full_name : "Jane Doe"}
+          username={user ? user.full_name : "Guest"}
           reminder="Drink water"
         />
       ) : null}

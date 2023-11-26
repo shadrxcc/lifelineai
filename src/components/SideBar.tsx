@@ -38,10 +38,14 @@ const SideBar = ({
                 <img src="/clock.svg" alt="" />
                 <p className="text-sm text-[#40A9FF]">This week</p>
               </div>
-              <div className="prompts flex text-sm text-[#595959] leading-5 flex-col text-center items-end gap-y-3 px-3">
-                <p>I have a headache and....</p>
-                <p>I have a headache and....</p>
-                <p>I have a headache and....</p>
+              <span>
+              <p className="text-sm text-[#595959] text-center leading-5">No search history</p>
+              </span>
+              <div className="prompts hidden text-sm text-[#595959] leading-5 flex-col text-center items-end gap-y-3 px-3">
+                {/* <p className="cursor-pointer">I have a headache and....</p>
+                <p className="cursor-pointer">I have a headache and....</p>
+                <p className="cursor-pointer">I have a headache and....</p> */}
+               
               </div>
             </div>
           </div>

@@ -1,10 +1,10 @@
-import axios from 'axios';
-import { ChangeEvent, FormEvent, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Button from '../components/Button';
-import Card from '../components/Card';
-import PageHeader from '../components/PageHeader';
-import { BASE_URL, ENDPOINTS } from '../config';
+import axios from "axios";
+import { ChangeEvent, FormEvent, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Button from "../components/Button";
+import Card from "../components/Card";
+import PageHeader from "../components/PageHeader";
+import { BASE_URL, ENDPOINTS } from "../config";
 
 interface RegisterDataType {
   full_name: string;
@@ -18,10 +18,10 @@ const Register = () => {
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [userData, setUserData] = useState<RegisterDataType>({
-    full_name: '',
-    email: '',
-    password: '',
-    preferred_language: 'en',
+    full_name: "",
+    email: "",
+    password: "",
+    preferred_language: "en",
   });
 
   const { full_name, email, password, preferred_language } = userData;
@@ -55,66 +55,76 @@ const Register = () => {
 
         if (res.status === 200 || res.status === 201) {
           console.log(res);
+          sessionStorage.setItem("userEmail", email);
 
           setUserData({
-            full_name: '',
-            email: '',
-            password: '',
-            preferred_language: 'en',
+            full_name: "",
+            email: "",
+            password: "",
+            preferred_language: "en",
           });
 
-          navigate('/verify-email');
+          navigate("/verify-email");
         }
         setIsLoading(false);
       } catch (error) {
         console.log(error);
         setIsLoading(false);
       }
-    } else console.log('One or more inputs are invalid');
+    } else console.log("One or more inputs are invalid");
   };
 
   return (
-    <div className='p-4'>
+    <div className="p-4">
       <PageHeader
-        linkText='sign in'
-        title='Already have an account?'
-        url='/login'
+        linkText="sign in"
+        title="Already have an account?"
+        url="/login"
       />
 
-      <div className='mt-16'>
+      <div className="mt-16">
         <Card
           heading="Let's get to know you!"
-          subHeading='Please provide your personal details so we can personalize your experience.'
+          subHeading="Please provide your personal details so we can personalize your experience."
         >
           <form onSubmit={formSubmitHandler}>
-            <div className='input-group'>
-              <label htmlFor='full_name'>Enter your name <span className="text-[#F12052]"> <span className="text-[#F12052]">*</span></span></label>
+            <div className="input-group">
+              <label htmlFor="full_name">
+                Enter your name{" "}
+                <span className="text-[#F12052]">
+                  {" "}
+                  <span className="text-[#F12052]">*</span>
+                </span>
+              </label>
               <input
-                type='text'
-                id='full_name'
-                placeholder='e.g Jane Doe'
+                type="text"
+                id="full_name"
+                placeholder="e.g Jane Doe"
                 value={full_name}
                 onChange={inputChangeHandler}
               />
             </div>
             {/*  */}
-            <div className='input-group'>
-              <label htmlFor='email'>Enter your email address <span className="text-[#F12052]">*</span></label>
+            <div className="input-group">
+              <label htmlFor="email">
+                Enter your email address{" "}
+                <span className="text-[#F12052]">*</span>
+              </label>
               <input
-                type='email'
-                id='email'
-                placeholder='e.g janedoe@gmail.com'
+                type="email"
+                id="email"
+                placeholder="e.g janedoe@gmail.com"
                 value={email}
                 onChange={inputChangeHandler}
               />
             </div>
             {/*  */}
-            <div className='input-group'>
-              <label htmlFor='preferred_language'>Preferred Language</label>
+            <div className="input-group">
+              <label htmlFor="preferred_language">Preferred Language</label>
               <select
-                name='preferred_language'
-                id='preferred_language'
-                defaultValue='en'
+                name="preferred_language"
+                id="preferred_language"
+                defaultValue="en"
                 onChange={(e) =>
                   setUserData((prev) => ({
                     ...prev,
@@ -122,31 +132,33 @@ const Register = () => {
                   }))
                 }
               >
-                <option value='en'>English</option>
-                <option value='fr'>French</option>
-                <option value='es'>Espanol</option>
+                <option value="en">English</option>
+                <option value="fr">French</option>
+                <option value="es">Espanol</option>
               </select>
             </div>
             {/*  */}
-            <div className='input-group'>
-              <label htmlFor='password'>Password <span className="text-[#F12052]">*</span></label>
+            <div className="input-group">
+              <label htmlFor="password">
+                Password <span className="text-[#F12052]">*</span>
+              </label>
               <input
-                type='password'
-                id='password'
-                placeholder='********'
+                type="password"
+                id="password"
+                placeholder="********"
                 value={password}
                 onChange={inputChangeHandler}
               />
             </div>
             {/*  */}
-            <Button title='Get Started' isLoading={isLoading} />
+            <Button title="Get Started" isLoading={isLoading} />
           </form>
 
           <div
             className={`mt-8 mx-auto flex items-center justify-center gap-2`}
           >
-            <div className='h-6 w-6 bg-gray-400 rounded-full'></div>
-            <div className='h-4 w-4 bg-gray-200 rounded-full'></div>
+            <div className="h-6 w-6 bg-gray-400 rounded-full"></div>
+            <div className="h-4 w-4 bg-gray-200 rounded-full"></div>
           </div>
         </Card>
       </div>

@@ -167,7 +167,7 @@ function Conversation({
                         onClick={handleRegenerate}
                         className="flex rounded-lg items-center gap-x-2 py-1 px-4 border hover:bg-[#1F53B9] hover:text-white text-[#92d1ff] border-[#18A1CC]"
                       >
-                        <img src="/alarm-blue.svg" alt="" />
+                        <img src="/reload.svg" alt="" />
                         Regenerate response
                       </button>
 
@@ -176,7 +176,7 @@ function Conversation({
                         onClick={setReminder}
                         className="flex rounded-lg text-[#92d1ff] hover:bg-[#1F53B9] hover:text-white items-center gap-x-2 py-1 px-4 border border-[#18A1CC]"
                       >
-                        <img src="/reload.svg" alt="" />
+                        <img src="/alarm-blue.svg" alt="" />
                         Set reminder for treatment
                       </button>
                     </div>

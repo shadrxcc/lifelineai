@@ -26,3 +26,9 @@ export interface InputMessageProps {
   isLoading: boolean;
   translateText: () => void;
 }
+
+export interface Journal {
+  title: string;
+  url: string;
+  source: string;
+}

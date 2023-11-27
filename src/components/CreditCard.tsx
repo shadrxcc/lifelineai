@@ -3,15 +3,19 @@ const CreditCard = ({
   subHeading,
   className,
   btnText,
+  id,
+  url,
 }: {
   heading?: string;
   subHeading?: string;
-
+  id: number;
+  url: string;
   className?: string;
   btnText?: string;
 }) => {
   return (
     <div
+      key={id}
       className={`py-8 rounded-xl  text-center relative credit-card shadow-lg mx-auto border border-gray-50 ${className}`}
     >
       <div className=" my-5">
@@ -28,12 +32,13 @@ const CreditCard = ({
         alt=""
       />
 
-      <button
+      <a
+        href={url}
         id="credit-btn"
-        className="flex mx-auto text-[#18A1CC] items-center py-2 px-4 font-semibold leading-6 text-sm"
+        className="flex mx-auto text-[#18A1CC] w-fit items-center py-2 px-4 font-semibold leading-6 text-sm"
       >
         {btnText} <img src="/chevron-right.svg" alt="" />
-      </button>
+      </a>
     </div>
   );
 };

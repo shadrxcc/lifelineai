@@ -74,7 +74,7 @@ const ConversationHeader: React.FC<ConversationHeaderProps> = ({
       {showProfile ? (
         <UserProfile
           name={getInitials({ name: user ? user.full_name : "G" })}
-          className="absolute left-24"
+          className="absolute top-20 left-24"
           useremail={user ? user.email : ""}
           username={user ? user.full_name : "Guest"}
           reminder="Drink water"

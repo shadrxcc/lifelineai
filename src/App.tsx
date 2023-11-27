@@ -10,6 +10,10 @@ import { ForgotPassword } from "./pages/ForgotPassword";
 import { ResetLink } from "./pages/ResetLink";
 import { ResetPassword } from "./pages/ResetPassword";
 import Dashboard from "./pages/Dashboard";
+// import Hospital from "./components/Hospital";
+// import MainComponent from "./components/Hospital";
+// import ArticleList from "./components/Hospital";
+import MedicalJournalsList from "./components/Hospital";
 
 
 export default function App() {
@@ -25,6 +29,7 @@ export default function App() {
         <Route path="/reset-link" element={<ResetLink />} />
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/hospital" element={<MedicalJournalsList/>} />
       </Routes>
     </>
   );

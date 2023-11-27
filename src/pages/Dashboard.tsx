@@ -3,6 +3,8 @@ import { useState } from "react";
 import SideBar from "../components/SideBar";
 import PrivacyPolicy from "../components/PrivacyPolicy";
 import Confirmation from "../components/Confirmation";
+import Reminder from "../components/Reminder";
+import FeedBack from "../components/FeedBack";
 // import { useAuth } from "../context/AuthContext";
 // import { useNavigate } from "react-router-dom";
 
@@ -11,6 +13,8 @@ const Dashboard = () => {
   const [tour1, setTour1] = useState(false);
   const [tour2, setTour2] = useState(false);
   const [tour3, setTour3] = useState(false);
+  const [reminder, setReminder] = useState(false);
+  const [feedback, setFeedBack] = useState(false);
 
   const [clearChat, setClearChat] = useState(false);
 
@@ -20,6 +24,14 @@ const Dashboard = () => {
 
   const clearModalClose = () => {
     setClearChat(false);
+  };
+
+  const OpenFeedback = () => {
+    setFeedBack(true);
+  };
+
+  const CloseFeedback = () => {
+    setFeedBack(false);
   };
 
   // const navigate = useNavigate()
@@ -35,6 +47,14 @@ const Dashboard = () => {
 
   const closePrivacy = () => {
     setPrivacyPolicy(false);
+  };
+
+  const openReminder = () => {
+    setReminder(true);
+  };
+
+  const closeReminder = () => {
+    setReminder(false);
   };
 
   const startGuide = () => {
@@ -68,6 +88,10 @@ const Dashboard = () => {
         <PrivacyPolicy startGuide={startGuide} onClose={closePrivacy} />
       )}
 
+      {reminder ? <Reminder onClose={closeReminder} /> : null}
+
+      {feedback ? <FeedBack onClose={CloseFeedback} /> : null}
+
       {clearChat ? <Confirmation onClose={clearModalClose} /> : null}
       <div className="flex w-full ">
         <SideBar
@@ -81,6 +105,9 @@ const Dashboard = () => {
 
         <div className="flex-1">
           <Conversation
+            like={OpenFeedback}
+            dislike={OpenFeedback}
+            setReminder={openReminder}
             CloseTour={closeTour}
             step1={moveToStep2}
             tour1={tour1}

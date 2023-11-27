@@ -1,8 +1,14 @@
+import Modal from "./Modal";
 import ModalCard from "./ModalCard";
 
-const Reminder = () => {
+interface ReminderProps {
+  onClose: () => void;
+}
+
+const Reminder = ({onClose} : ReminderProps) => {
   return (
-    <ModalCard className="gap-y-3" heading="Set Reminder">
+    <Modal onClose={onClose}>
+  <ModalCard className="gap-y-3" heading="Set Reminder">
       <form className="flex flex-col gap-y-3 w-full">
         <span className="flex items-center gap-x-3.5">
           <input type="radio" name="" id="" />
@@ -18,7 +24,7 @@ const Reminder = () => {
         </span>
         <div className="flex justify-end w-full">
           <div className="flex items-center gap-x-2">
-            <button id="cancel" className="px-6 py-2 bg-[#EDF8FF] leading-4 text-xs font-semibold rounded-lg gradient-text text-[#EDF8FF]">
+            <button onClick={onClose} id="cancel" className="px-6 py-2 bg-[#EDF8FF] leading-4 text-xs font-semibold rounded-lg gradient-text text-[#EDF8FF]">
               <p id="cancel-text">Cancel</p>
             </button>
 
@@ -32,6 +38,9 @@ const Reminder = () => {
         </div>
       </form>
     </ModalCard>
+
+    </Modal>
+  
   );
 };
 

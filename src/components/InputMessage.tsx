@@ -1,22 +1,25 @@
+import { InputMessageProps } from "../@types/index.d";
+
 const InputMessage = ({
   inputValue,
   setInputValue,
   onSubmit,
   isLoading,
-}: {
-  inputValue: string;
-  setInputValue: (value: string) => void;
-  onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
-  isLoading: boolean;
-}) => {
+  translateText
+}: InputMessageProps) => {
   return (
     <div className="space-y-3">
       <div className="flex max-w-[90%] sm:max-w-[80%] mx-auto">
         <div className="flex flex-1 items-center gap-x-3">
-          <button className="flex items-center py-1.5 text-sm leading-5 text-[#585858]  px-3 bg-[#EEE] rounded-lg gap-x-2.5">
+          <button
+            onClick={translateText}
+            className="flex items-center py-1.5 text-sm leading-5 text-[#585858]  px-3 bg-[#EEE] rounded-lg gap-x-2.5"
+          >
             <img src="/translate.svg" alt="" /> Translate
           </button>
-          <button className="flex items-center py-1.5 text-sm leading-5 text-[#585858]  px-3 bg-[#EEE] rounded-lg gap-x-2.5">
+          <button
+            className="flex items-center py-1.5 text-sm leading-5 text-[#585858]  px-3 bg-[#EEE] rounded-lg gap-x-2.5"
+          >
             <img src="/stars.svg" alt="" />
             Improve
           </button>

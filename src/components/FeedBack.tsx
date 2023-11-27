@@ -1,8 +1,14 @@
+import Modal from "./Modal";
 import ModalCard from "./ModalCard";
 
-const FeedBack = () => {
+interface FeedBackProps {
+  onClose: () => void;
+}
+
+const FeedBack = ({onClose} : FeedBackProps) => {
   return (
-    <ModalCard className="gap-y-4" heading="Provide Feedback">
+   <Modal onClose={onClose}>
+     <ModalCard className="gap-y-4" heading="Provide Feedback">
       <form className="w-full flex flex-col gap-y-4">
         <textarea
           name=""
@@ -15,7 +21,7 @@ const FeedBack = () => {
         <div className="flex justify-end w-full">
           <div className="flex items-center gap-x-2">
             <button
-              id="cancel"
+              id="cancel" onClick={onClose}
               className="px-6 py-2 leading-4 text-xs font-semibold rounded-lg gradient-text text-[#EDF8FF]"
             >
               <p id="cancel-text"> Cancel</p>
@@ -30,6 +36,7 @@ const FeedBack = () => {
         </div>
       </form>
     </ModalCard>
+   </Modal>
   );
 };
 

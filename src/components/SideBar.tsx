@@ -1,10 +1,10 @@
-import axios from "axios";
-import { Journal } from "../@types/index.d";
+
 import { useAuth } from "../context/AuthContext";
 import CreditCard from "./CreditCard";
 import TourDialog from "./TourDialog";
-import { useEffect, useState } from "react";
+
 import { shortenText } from "../utils/shortentext";
+import articles from '../data/articles.json'
 
 const SideBar = ({
   step2,
@@ -27,32 +27,32 @@ const SideBar = ({
 }) => {
   const { logout } = useAuth();
 
-  const [journals, setJournals] = useState<Journal[]>([]);
+  // const [journals, setJournals] = useState<Journal[]>([]);
 
-  const key = import.meta.env.VITE_RAPID_KEY;
+  // const key = import.meta.env.VITE_RAPID_KEY;
 
-  useEffect(() => {
-    const fetchJournals = async () => {
-      try {
-        const response = await axios.get(
-          "https://medical-articles-live.p.rapidapi.com/journals/diabetes",
-          {
-            headers: {
-              "X-RapidAPI-Key": `${key}`,
-              "X-RapidAPI-Host": "medical-articles-live.p.rapidapi.com",
-            },
-          }
-        );
-        const fetchedJournals: Journal[] = response.data;
+  // useEffect(() => {
+  //   const fetchJournals = async () => {
+  //     try {
+  //       const response = await axios.get(
+  //         "https://medical-articles-live.p.rapidapi.com/journals/diabetes",
+  //         {
+  //           headers: {
+  //             "X-RapidAPI-Key": `${key}`,
+  //             "X-RapidAPI-Host": "medical-articles-live.p.rapidapi.com",
+  //           },
+  //         }
+  //       );
+  //       const fetchedJournals: Journal[] = response.data;
 
-        setJournals(fetchedJournals);
-      } catch (error) {
-        console.error("Error fetching journals:", error);
-      }
-    };
+  //       setJournals(fetchedJournals);
+  //     } catch (error) {
+  //       console.error("Error fetching journals:", error);
+  //     }
+  //   };
 
-    fetchJournals();
-  }, []);
+  //   fetchJournals();
+  // }, []);
 
   return (
     <div
@@ -107,7 +107,7 @@ const SideBar = ({
       </div>
 
       <div className="relative">
-        {journals.slice(0, 1).map((journal, index) => (
+        {articles.slice(0, 1).map((journal, index) => (
           <CreditCard
             url={journal.url}
             id={index}

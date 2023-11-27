@@ -24,6 +24,10 @@ interface ConversationProps {
   menu: boolean,
   closeMenu: () => void;
   clearModal: () => void;
+  enabled: boolean;
+  showProfile: boolean;
+  profileShow: () => void;
+  handleSwitchChange: (isChecked: boolean) => void;
 }
 
 export interface ChatMessage {
@@ -43,7 +47,11 @@ function Conversation({
   setChatLog,
   toggleMenu,
   menu,
-  closeMenu
+  closeMenu,
+  enabled,
+  handleSwitchChange,
+  profileShow,
+  showProfile
 }: ConversationProps) {
   const [inputValue, setInputValue] = useState("");
   // const [chatLog, setChatLog] = useState<ChatMessage[]>([]);
@@ -150,7 +158,7 @@ function Conversation({
   return (
     <>
       <div id="convo" className="flex flex-col h-screen">
-        <ConversationHeader clearModalOpen={clearModal} closeMenu={closeMenu} menu={menu} toggleMenu={toggleMenu} CloseTour={CloseTour} step1={step1} tour1={tour1} />
+        <ConversationHeader handleSwitchChange={handleSwitchChange} profileShow={profileShow} showProfile={showProfile} enabled={enabled} clearModalOpen={clearModal} closeMenu={closeMenu} menu={menu} toggleMenu={toggleMenu} CloseTour={CloseTour} step1={step1} tour1={tour1} />
 
         {/* <Confirmation/>
       <SaveConfirmation/>

@@ -6,13 +6,12 @@ interface ConfirmProps {
 
 }
 
-const SaveConfirmation = ({onClose} : ConfirmProps) => {
+const TurnOnConfirmation = ({onClose} : ConfirmProps) => {
   return (
     <Modal onClose={onClose}>
-      <ModalCard className="gap-y-3" heading="Save Confirmation">
+      <ModalCard className="gap-y-3" heading="Confirmation">
       <p className="text-[#242424] text-base leading-6">
-        You are about to turn off all reminders previously set. This action can
-        be undone at anytime. Are you sure?
+      You are about to turn on reminders previously. This can be undone at anytime. Are you sure of this action?
       </p>
 
       <div className="flex justify-end w-full">
@@ -23,8 +22,8 @@ const SaveConfirmation = ({onClose} : ConfirmProps) => {
           >
             Confirm
           </button>{" "}
-          <button onClick={onClose}
-            id="cancel"
+          <button
+            id="cancel" onClick={onClose}
             className="px-6 py-2 bg-[#EDF8FF] leading-4 text-xs font-semibold rounded-lg gradient-text text-[#EDF8FF]"
           >
             <p id="cancel-text">Cancel</p>
@@ -36,4 +35,4 @@ const SaveConfirmation = ({onClose} : ConfirmProps) => {
   );
 };
 
-export default SaveConfirmation;
+export default TurnOnConfirmation;

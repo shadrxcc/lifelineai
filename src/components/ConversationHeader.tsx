@@ -15,6 +15,10 @@ interface ConversationHeaderProps {
   clearModalOpen: () => void;
   clearchat?: () => void;
   closeMenu: () => void;
+  enabled: boolean;
+  showProfile: boolean;
+  profileShow: () => void;
+  handleSwitchChange: (isChecked: boolean) => void;
 }
 
 const ConversationHeader: React.FC<ConversationHeaderProps> = ({
@@ -25,14 +29,16 @@ const ConversationHeader: React.FC<ConversationHeaderProps> = ({
   clearModalOpen,
   menu,
   closeMenu,
+  enabled,
+  showProfile,
+  profileShow,
+  handleSwitchChange
+  
 }) => {
   const authContext = useAuth();
 
-  const [showProfile, setShowProfile] = useState(false);
+  // const [showProfile, setShowProfile] = useState(false);
 
-  const profileShow = () => {
-    setShowProfile(!showProfile);
-  };
 
   if (!authContext) {
     return null;
@@ -72,7 +78,7 @@ const ConversationHeader: React.FC<ConversationHeaderProps> = ({
       ) : null}
 
       {showProfile ? (
-        <UserProfile
+        <UserProfile enabled={enabled} handleSwitchChange={handleSwitchChange}
           name={getInitials({ name: user ? user.full_name : "G" })}
           className="absolute top-20 left-24"
           useremail={user ? user.email : ""}

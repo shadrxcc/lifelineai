@@ -17,7 +17,7 @@ interface ConversationProps {
   CloseTour: () => void;
   setReminder: () => void;
   like: () => void;
-  dislike: () => void
+  dislike: () => void;
 }
 
 interface ChatMessage {
@@ -25,7 +25,14 @@ interface ChatMessage {
   message: string;
 }
 
-function Conversation({ tour1, step1, CloseTour, setReminder, like, dislike }: ConversationProps) {
+function Conversation({
+  tour1,
+  step1,
+  CloseTour,
+  setReminder,
+  like,
+  dislike,
+}: ConversationProps) {
   const [inputValue, setInputValue] = useState("");
   const [chatLog, setChatLog] = useState<ChatMessage[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -38,14 +45,12 @@ function Conversation({ tour1, step1, CloseTour, setReminder, like, dislike }: C
     //       from: 'en', // Source language (English)
     //       to: 'es', // Replace 'es' with the user's preferred language code
     //     });
-  
     //     setTranslatedMessage(translation.text);
     //   } catch (error) {
     //     console.error('Error translating message:', error);
     //   }
     // }
   };
-  
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -56,30 +61,38 @@ function Conversation({ tour1, step1, CloseTour, setReminder, like, dislike }: C
 
   const handleRegenerate = () => {
     const lastUserMessage = chatLog.find((msg) => msg.type === "user");
-  
+
     if (lastUserMessage) {
       const lastBotMessageIndex = chatLog
         .slice()
         .reverse()
         .findIndex((msg) => msg.type === "bot");
-  
+
       if (lastBotMessageIndex !== -1) {
-        const lastBotMessage = chatLog[chatLog.length - 1 - lastBotMessageIndex];
-        sendMessage(lastUserMessage.message, lastBotMessageIndex, lastBotMessage.message);
+        const lastBotMessage =
+          chatLog[chatLog.length - 1 - lastBotMessageIndex];
+        sendMessage(
+          lastUserMessage.message,
+          lastBotMessageIndex,
+          lastBotMessage.message
+        );
       } else {
         sendMessage(lastUserMessage.message);
       }
     }
   };
-  
-  
-  const sendMessage = (message: string, indexToUpdate?: number, existingMessage?: string) => {
+
+  const sendMessage = (
+    message: string,
+    indexToUpdate?: number,
+    existingMessage?: string
+  ) => {
     const url = "https://api.openai.com/v1/chat/completions";
     const headers = {
       "Content-type": "application/json",
       Authorization: `Bearer ${import.meta.env.VITE_ACCESS_TOKEN}`,
     };
-  
+
     const data = {
       model: "gpt-3.5-turbo-1106",
       messages: [
@@ -87,18 +100,18 @@ function Conversation({ tour1, step1, CloseTour, setReminder, like, dislike }: C
         { role: "system", content: "You are a helpful assistant." },
       ],
     };
-  
+
     if (indexToUpdate !== undefined && existingMessage !== undefined) {
       data.messages.push({ role: "assistant", content: existingMessage });
     }
-  
+
     setIsLoading(true);
-  
+
     axios
       .post(url, data, { headers: headers })
       .then((response) => {
         console.log(response);
-  
+
         if (indexToUpdate !== undefined) {
           setChatLog((prevChat) =>
             prevChat.map((msg, index) =>
@@ -113,7 +126,7 @@ function Conversation({ tour1, step1, CloseTour, setReminder, like, dislike }: C
             { type: "bot", message: response.data.choices[0].message.content },
           ]);
         }
-  
+
         setIsLoading(false);
       })
       .catch((error) => {
@@ -138,18 +151,27 @@ function Conversation({ tour1, step1, CloseTour, setReminder, like, dislike }: C
                 <UserChat message={message.message} />
               ) : (
                 <>
-                  <BotChat like={like} dislike={dislike} message={message.message} />
+                  <BotChat
+                    like={like}
+                    dislike={dislike}
+                    message={message.message}
+                  />
                   <div className="flex">
                     <div className="flex m-auto items-center gap-x-7">
                       <button
+                        id="chat-actions"
                         onClick={handleRegenerate}
-                        className="flex rounded-lg items-center gap-x-2 py-1 px-4 border gradient-text border-[#18A1CC]"
+                        className="flex rounded-lg items-center gap-x-2 py-1 px-4 border hover:bg-[#1F53B9] hover:text-white text-[#92d1ff] border-[#18A1CC]"
                       >
                         <img src="/alarm-blue.svg" alt="" />
                         Regenerate response
                       </button>
 
-                      <button onClick={setReminder} className="flex rounded-lg items-center gap-x-2 py-1 px-4 border gradient-text border-[#18A1CC]">
+                      <button
+                        id="chat-actions"
+                        onClick={setReminder}
+                        className="flex rounded-lg text-[#92d1ff] hover:bg-[#1F53B9] hover:text-white items-center gap-x-2 py-1 px-4 border border-[#18A1CC]"
+                      >
                         <img src="/reload.svg" alt="" />
                         Set reminder for treatment
                       </button>
@@ -160,7 +182,8 @@ function Conversation({ tour1, step1, CloseTour, setReminder, like, dislike }: C
             </div>
           ))}
         </div>
-        <InputMessage translateText={handleTranslate}
+        <InputMessage
+          translateText={handleTranslate}
           isLoading={isLoading}
           onSubmit={handleSubmit}
           inputValue={inputValue}

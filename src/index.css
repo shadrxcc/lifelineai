@@ -254,3 +254,23 @@ html body {
     display: none;
   }
 }
+
+/* #chat-actions {
+  color
+  background: var(
+    --main-primary,
+    linear-gradient(134deg, #18a1cc 16.37%, #92d1ff 94.77%)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#chat-actions:hover {
+ background-color: #1F53B9;
+}
+
+#chat-actions:hover .gradient-text {
+ background-color: none;
+ color: white;
+} */

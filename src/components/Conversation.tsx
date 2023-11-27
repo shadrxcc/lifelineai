@@ -18,9 +18,11 @@ interface ConversationProps {
   setReminder: () => void;
   like: () => void;
   dislike: () => void;
+  chatLog: ChatMessage[];
+  setChatLog: React.Dispatch<React.SetStateAction<ChatMessage[]>>;
 }
 
-interface ChatMessage {
+export interface ChatMessage {
   type: "user" | "bot";
   message: string;
 }
@@ -32,9 +34,11 @@ function Conversation({
   setReminder,
   like,
   dislike,
+  chatLog,
+  setChatLog
 }: ConversationProps) {
   const [inputValue, setInputValue] = useState("");
-  const [chatLog, setChatLog] = useState<ChatMessage[]>([]);
+  // const [chatLog, setChatLog] = useState<ChatMessage[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleTranslate = async () => {

@@ -1,4 +1,4 @@
-import Conversation from "../components/Conversation";
+import Conversation, { ChatMessage } from "../components/Conversation";
 import { useState } from "react";
 import SideBar from "../components/SideBar";
 import PrivacyPolicy from "../components/PrivacyPolicy";
@@ -15,6 +15,7 @@ const Dashboard = () => {
   const [tour3, setTour3] = useState(false);
   const [reminder, setReminder] = useState(false);
   const [feedback, setFeedBack] = useState(false);
+  const [chatLog, setChatLog] = useState<ChatMessage[]>([]);
 
   const [clearChat, setClearChat] = useState(false);
 
@@ -48,6 +49,11 @@ const Dashboard = () => {
   const closePrivacy = () => {
     setPrivacyPolicy(false);
   };
+
+  const clearConvo = () => {
+    setChatLog([])
+    clearModalClose()
+  }
 
   const openReminder = () => {
     setReminder(true);
@@ -92,7 +98,7 @@ const Dashboard = () => {
 
       {feedback ? <FeedBack onClose={CloseFeedback} /> : null}
 
-      {clearChat ? <Confirmation onClose={clearModalClose} /> : null}
+      {clearChat ? <Confirmation clearConvo={clearConvo} onClose={clearModalClose} /> : null}
       <div className="flex w-full ">
         <SideBar
           clearchat={clearModalOpen}
@@ -104,7 +110,7 @@ const Dashboard = () => {
         />
 
         <div className="flex-1">
-          <Conversation
+          <Conversation chatLog={chatLog} setChatLog={setChatLog}
             like={OpenFeedback}
             dislike={OpenFeedback}
             setReminder={openReminder}

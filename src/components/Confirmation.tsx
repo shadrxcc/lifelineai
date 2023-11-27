@@ -1,7 +1,12 @@
 import Modal from "./Modal";
 import ModalCard from "./ModalCard";
 
-const Confirmation = ({ onClose }: { onClose: () => void }) => {
+interface ConfirmationProps {
+  onClose: () => void;
+  clearConvo: () => void;
+}
+
+const Confirmation = ({ onClose, clearConvo }: ConfirmationProps) => {
   return (
     <Modal onClose={onClose}>
       <ModalCard className="gap-y-3" heading="Confirmation">
@@ -13,7 +18,7 @@ const Confirmation = ({ onClose }: { onClose: () => void }) => {
         <div className="flex justify-end w-full">
           <div className="flex items-center gap-x-2">
             <button
-              id="agree" onClick={onClose}
+              id="agree" onClick={clearConvo}
               className="px-6 rounded-lg text-white text-xs font-semibold leading-4 py-2"
             >
               Confirm

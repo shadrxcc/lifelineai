@@ -1,6 +1,21 @@
+import { useState } from "react";
 import { BotChatProps } from "../@types/index.d";
 
 export const BotChat = ({ message, like, dislike }: BotChatProps) => {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(message);
+      setCopied(true);
+      setTimeout(() => {
+        setCopied(false);
+      }, 2000);
+    } catch (error) {
+      console.error("Error copying text to clipboard:", error);
+    }
+  };
+
   return (
     <div
       id="bot-chat"
@@ -11,8 +26,12 @@ export const BotChat = ({ message, like, dislike }: BotChatProps) => {
       </p>
 
       <div className="flex gap-x-2 items-center">
-        <button className="p-1">
-          <img src="/copy.svg" alt="" />
+        <button onClick={handleCopy} className="p-1">
+          {copied ? (
+            <img src="/check.svg" alt="" />
+          ) : (
+            <img src="/copy.svg" alt="" />
+          )}
         </button>
         <button onClick={like} className="p-1">
           <img src="/like.svg" alt="" />

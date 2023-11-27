@@ -28,10 +28,8 @@ const SideBar = ({
   const { logout } = useAuth();
 
   const [journals, setJournals] = useState<Journal[]>([]);
- 
-const key = import.meta.env.VITE_RAPID_KEY
- 
 
+  const key = import.meta.env.VITE_RAPID_KEY;
 
   useEffect(() => {
     const fetchJournals = async () => {
@@ -40,8 +38,7 @@ const key = import.meta.env.VITE_RAPID_KEY
           "https://medical-articles-live.p.rapidapi.com/journals/diabetes",
           {
             headers: {
-              "X-RapidAPI-Key":
-                `${key}`,
+              "X-RapidAPI-Key": `${key}`,
               "X-RapidAPI-Host": "medical-articles-live.p.rapidapi.com",
             },
           }
@@ -56,8 +53,6 @@ const key = import.meta.env.VITE_RAPID_KEY
 
     fetchJournals();
   }, []);
-
-
 
   return (
     <div
@@ -112,8 +107,10 @@ const key = import.meta.env.VITE_RAPID_KEY
       </div>
 
       <div className="relative">
-        {journals.slice(0,1).map((journal, index) => (
-          <CreditCard url={journal.url} id={index}
+        {journals.slice(0, 1).map((journal, index) => (
+          <CreditCard
+            url={journal.url}
+            id={index}
             btnText="View article"
             heading={journal.source}
             subHeading={shortenText(journal.title, 75)}

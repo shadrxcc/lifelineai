@@ -67,7 +67,7 @@ const ConversationHeader: React.FC<ConversationHeaderProps> = ({
         <SideBar
           clearchat={clearModalOpen}
           closeMenu={closeMenu}
-          className="absolute w-full flex flex-col active-menu justify-between top-0 left-0 right-0 sm:hidden"
+          className="absolute z-10 w-full flex flex-col active-menu justify-between top-0 left-0 right-0 sm:hidden"
         />
       ) : null}
 

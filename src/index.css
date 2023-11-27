@@ -255,22 +255,18 @@ html body {
   }
 }
 
-/* #chat-actions {
-  color
-  background: var(
-    --main-primary,
-    linear-gradient(134deg, #18a1cc 16.37%, #92d1ff 94.77%)
-  );
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.active-menu {
+  animation: active .3s ease-in-out;
 }
 
-#chat-actions:hover {
- background-color: #1F53B9;
-}
+@keyframes active {
+  0% {
+    opacity: 0;
+    transform: scaleX(0);
+  }
 
-#chat-actions:hover .gradient-text {
- background-color: none;
- color: white;
-} */
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

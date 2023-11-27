@@ -7,27 +7,37 @@ const SideBar = ({
   finish,
   tour2,
   tour3,
+  className,
   CloseTour,
   clearchat,
+  closeMenu,
 }: {
-  step2: () => void;
-  finish: () => void;
-  tour2: Boolean;
-  tour3: Boolean;
-  CloseTour: () => void;
-  clearchat: () => void;
+  step2?: () => void;
+  finish?: () => void;
+  tour2?: Boolean;
+  tour3?: Boolean;
+  className?: string;
+  CloseTour?: () => void;
+  clearchat?: () => void;
+  closeMenu?: () => void;
 }) => {
   const { logout } = useAuth();
 
   return (
     <div
       id="sidebar"
-      className="h-screen gap-y-8 hidden sm:flex flex-col justify-between w-[30%] lg:w-[286px] py-8 px-5"
+      className={`h-screen ${className} gap-y-8 w-[30%] lg:w-[286px] py-8 px-5`}
     >
       <div>
-        <div className="flex items-center gap-x-2">
-          <h1 className="text-[#141414] text-2xl font-bold">Lifeline</h1>
-          <img src="/heart-logo.svg" alt="" />
+        <div className="flex justify-between">
+          <div className="flex items-center gap-x-2">
+            <h1 className="text-[#141414] text-2xl font-bold">Lifeline</h1>
+            <img src="/heart-logo.svg" alt="" />
+          </div>
+
+          <button onClick={closeMenu} className="sm:hidden">
+            <img width={30} height={30} src="./close.svg" alt="" />
+          </button>
         </div>
 
         <div className="history-wrapper relative">
@@ -39,13 +49,14 @@ const SideBar = ({
                 <p className="text-sm text-[#40A9FF]">This week</p>
               </div>
               <span>
-              <p className="text-sm text-[#595959] text-center leading-5">No search history</p>
+                <p className="text-sm text-[#595959] text-center leading-5">
+                  No search history
+                </p>
               </span>
               <div className="prompts hidden text-sm text-[#595959] leading-5 flex-col text-center items-end gap-y-3 px-3">
                 {/* <p className="cursor-pointer">I have a headache and....</p>
                 <p className="cursor-pointer">I have a headache and....</p>
                 <p className="cursor-pointer">I have a headache and....</p> */}
-               
               </div>
             </div>
           </div>

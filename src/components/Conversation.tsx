@@ -20,6 +20,10 @@ interface ConversationProps {
   dislike: () => void;
   chatLog: ChatMessage[];
   setChatLog: React.Dispatch<React.SetStateAction<ChatMessage[]>>;
+  toggleMenu: () => void;
+  menu: boolean,
+  closeMenu: () => void;
+  clearModal: () => void;
 }
 
 export interface ChatMessage {
@@ -35,7 +39,11 @@ function Conversation({
   like,
   dislike,
   chatLog,
-  setChatLog
+  clearModal,
+  setChatLog,
+  toggleMenu,
+  menu,
+  closeMenu
 }: ConversationProps) {
   const [inputValue, setInputValue] = useState("");
   // const [chatLog, setChatLog] = useState<ChatMessage[]>([]);
@@ -142,7 +150,7 @@ function Conversation({
   return (
     <>
       <div id="convo" className="flex flex-col h-screen">
-        <ConversationHeader CloseTour={CloseTour} step1={step1} tour1={tour1} />
+        <ConversationHeader clearModalOpen={clearModal} closeMenu={closeMenu} menu={menu} toggleMenu={toggleMenu} CloseTour={CloseTour} step1={step1} tour1={tour1} />
 
         {/* <Confirmation/>
       <SaveConfirmation/>

@@ -16,15 +16,21 @@ const Dashboard = () => {
   const [reminder, setReminder] = useState(false);
   const [feedback, setFeedBack] = useState(false);
   const [chatLog, setChatLog] = useState<ChatMessage[]>([]);
+  const [menu, setMenu] = useState(false);
 
   const [clearChat, setClearChat] = useState(false);
 
   const clearModalOpen = () => {
     setClearChat(true);
+    menuToggle()
   };
 
   const clearModalClose = () => {
     setClearChat(false);
+  };
+
+  const menuToggle = () => {
+    setMenu(!menu);
   };
 
   const OpenFeedback = () => {
@@ -51,9 +57,9 @@ const Dashboard = () => {
   };
 
   const clearConvo = () => {
-    setChatLog([])
-    clearModalClose()
-  }
+    setChatLog([]);
+    clearModalClose();
+  };
 
   const openReminder = () => {
     setReminder(true);
@@ -98,9 +104,12 @@ const Dashboard = () => {
 
       {feedback ? <FeedBack onClose={CloseFeedback} /> : null}
 
-      {clearChat ? <Confirmation clearConvo={clearConvo} onClose={clearModalClose} /> : null}
+      {clearChat ? (
+        <Confirmation clearConvo={clearConvo} onClose={clearModalClose} />
+      ) : null}
       <div className="flex w-full ">
         <SideBar
+          className="hidden sm:flex sm:flex-col sm:justify-between"
           clearchat={clearModalOpen}
           CloseTour={closeTour}
           step2={moveToStep3}
@@ -110,7 +119,13 @@ const Dashboard = () => {
         />
 
         <div className="flex-1">
-          <Conversation chatLog={chatLog} setChatLog={setChatLog}
+          <Conversation
+            clearModal={clearModalOpen}
+            closeMenu={menuToggle}
+            menu={menu}
+            toggleMenu={menuToggle}
+            chatLog={chatLog}
+            setChatLog={setChatLog}
             like={OpenFeedback}
             dislike={OpenFeedback}
             setReminder={openReminder}

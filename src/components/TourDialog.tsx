@@ -9,11 +9,11 @@ const TourDialog = ({
 }: {
   heading?: string;
   subHeading?: string;
-  step: string | number;
+  step?: string | number;
   className?: string;
-  Next: () => void;
+  Next?: () => void;
   btnText?: string;
-  CloseTour: () => void;
+  CloseTour?: () => void;
 }) => {
   return (
     <div

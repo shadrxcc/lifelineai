@@ -35,6 +35,8 @@ const CreditCard = ({
       <a
         href={url}
         id="credit-btn"
+        target="_blank"
+        rel="noreferrer"
         className="flex mx-auto text-[#18A1CC] w-fit items-center py-2 px-4 font-semibold leading-6 text-sm"
       >
         {btnText} <img src="/chevron-right.svg" alt="" />

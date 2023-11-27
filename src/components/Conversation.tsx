@@ -21,13 +21,15 @@ interface ConversationProps {
   chatLog: ChatMessage[];
   setChatLog: React.Dispatch<React.SetStateAction<ChatMessage[]>>;
   toggleMenu: () => void;
-  menu: boolean,
+  menu: boolean;
   closeMenu: () => void;
   clearModal: () => void;
-  enabled: boolean;
   showProfile: boolean;
   profileShow: () => void;
-  handleSwitchChange: (isChecked: boolean) => void;
+  offReminder?: () => void;
+  onReminder?: () => void;
+  turnon: boolean,
+  turnoff: boolean
 }
 
 export interface ChatMessage {
@@ -48,10 +50,12 @@ function Conversation({
   toggleMenu,
   menu,
   closeMenu,
-  enabled,
-  handleSwitchChange,
+  onReminder,
+  offReminder,
   profileShow,
-  showProfile
+  showProfile,
+  turnoff,
+  turnon
 }: ConversationProps) {
   const [inputValue, setInputValue] = useState("");
   // const [chatLog, setChatLog] = useState<ChatMessage[]>([]);
@@ -158,7 +162,19 @@ function Conversation({
   return (
     <>
       <div id="convo" className="flex flex-col h-screen">
-        <ConversationHeader handleSwitchChange={handleSwitchChange} profileShow={profileShow} showProfile={showProfile} enabled={enabled} clearModalOpen={clearModal} closeMenu={closeMenu} menu={menu} toggleMenu={toggleMenu} CloseTour={CloseTour} step1={step1} tour1={tour1} />
+        <ConversationHeader turnoff={turnoff} turnon={turnon}
+          onReminder={onReminder}
+          offReminder={offReminder}
+          profileShow={profileShow}
+          showProfile={showProfile}
+          clearModalOpen={clearModal}
+          closeMenu={closeMenu}
+          menu={menu}
+          toggleMenu={toggleMenu}
+          CloseTour={CloseTour}
+          step1={step1}
+          tour1={tour1}
+        />
 
         {/* <Confirmation/>
       <SaveConfirmation/>

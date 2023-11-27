@@ -1,5 +1,4 @@
 import UserPfp from "./UserPfp";
-import { Switch } from "@headlessui/react";
 
 const UserProfile = ({
   reminder,
@@ -7,16 +6,20 @@ const UserProfile = ({
   className,
   useremail,
   name,
-  enabled,
-  handleSwitchChange,
+  onReminder,
+  offReminder,
+  turnon,
+  turnoff
 }: {
   reminder: string;
   username: string;
   className?: string;
   useremail: string;
   name: string;
-  enabled: boolean;
-  handleSwitchChange: (isChecked: boolean) => void;
+  offReminder?: () => void;
+  onReminder?: () => void;
+  turnon: boolean;
+  turnoff: boolean
 }) => {
   return (
     <div
@@ -45,21 +48,10 @@ const UserProfile = ({
               20/11/23 (2pm)
             </span>
           </div>
-
-          <Switch
-            checked={enabled}
-            onChange={handleSwitchChange}
-            className={`${
-              enabled ? "bg-[#40A9FF]" : "bg-gray-200"
-            } relative inline-flex h-6 w-11 items-center rounded-full`}
-          >
-            {/* <span className="sr-only">Enable notifications</span> */}
-            <span
-              className={`${
-                enabled ? "translate-x-6" : "translate-x-1"
-              } inline-block h-4 w-4 transform rounded-full bg-white transition`}
-            />
-          </Switch>
+          <div className="flex">
+            {turnoff ? <img onClick={onReminder} src="/Switch_inactive.svg" alt="" /> : null}
+            {turnon ? <img onClick={offReminder} src="/Switch.svg" alt="" /> : null}
+          </div>
         </div>
       </div>
     </div>

@@ -14,10 +14,12 @@ interface ConversationHeaderProps {
   clearModalOpen: () => void;
   clearchat?: () => void;
   closeMenu: () => void;
-  enabled: boolean;
   showProfile: boolean;
   profileShow: () => void;
-  handleSwitchChange: (isChecked: boolean) => void;
+  onReminder?: () => void;
+  offReminder?: () => void;
+  turnon: boolean,
+  turnoff: boolean
 }
 
 const ConversationHeader: React.FC<ConversationHeaderProps> = ({
@@ -28,16 +30,16 @@ const ConversationHeader: React.FC<ConversationHeaderProps> = ({
   clearModalOpen,
   menu,
   closeMenu,
-  enabled,
+  onReminder,
   showProfile,
   profileShow,
-  handleSwitchChange
-  
+  offReminder,
+  turnoff,
+  turnon
 }) => {
   const authContext = useAuth();
 
   // const [showProfile, setShowProfile] = useState(false);
-
 
   if (!authContext) {
     return null;
@@ -77,7 +79,9 @@ const ConversationHeader: React.FC<ConversationHeaderProps> = ({
       ) : null}
 
       {showProfile ? (
-        <UserProfile enabled={enabled} handleSwitchChange={handleSwitchChange}
+        <UserProfile turnoff={turnoff} turnon={turnon}
+          offReminder={offReminder}
+          onReminder={onReminder}
           name={getInitials({ name: user ? user.full_name : "G" })}
           className="absolute top-20 left-24"
           useremail={user ? user.email : ""}
@@ -93,7 +97,7 @@ const ConversationHeader: React.FC<ConversationHeaderProps> = ({
           step={1}
           className={`absolute top-20 lg:top-14 sm:left-30 lg:left-44 z-10`}
           heading="Profile"
-          subHeading="Manage your profile information and medical history."
+          subHeading="Manage your profile information and reminders."
           btnText="Next"
         />
       ) : null}

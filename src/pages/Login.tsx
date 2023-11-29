@@ -11,15 +11,7 @@ import { useAuth } from "../context/AuthContext";
 
 const Login = () => {
   const navigate = useNavigate();
-  const authContext = useAuth();
-
-  // Check if authContext is defined
-  if (!authContext) {
-    // Handle the case where authContext is undefined
-    return null;
-  }
-
-  const { login } = authContext;
+  const { setAuth, login } = useAuth();
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [userData, setUserData] = useState<LoginDataType>({
@@ -51,13 +43,15 @@ const Login = () => {
           userData
         );
 
-        // const { data } = res;
-
-        // console.log(data);
-
         if (res.status === 200 || res.status === 201) {
           const { user_info } = res.data;
-
+          console.log(res.data);
+          const accessToken = res.data.access_token;
+          setAuth((prevAuth) => ({
+            ...prevAuth,
+            user: user_info,
+            accessToken: accessToken,
+          }));
           login(user_info);
           console.log(res.data.user_info);
 
@@ -84,7 +78,11 @@ const Login = () => {
     <div className="p-4">
       <PageHeader linkText="Sign up" title="Don't have an account?" url="/" />
       <div className="mt-16 relative bg-center">
-      <img className="absolute -top-24 right-0 lg:right-28 xl:right-64" src="/heartrate.svg" alt="" />
+        <img
+          className="absolute -top-24 right-0 lg:right-28 xl:right-64"
+          src="/heartrate.svg"
+          alt=""
+        />
         <Card
           className="absolute w-full left-0 right-0"
           heading="Welcome Back!"

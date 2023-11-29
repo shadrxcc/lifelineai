@@ -1,7 +1,4 @@
-import {
-  Route,
-  Routes
-} from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Login from "./pages/Login";
 import MedicalHistory from "./pages/MedicalHistory";
 import Register from "./pages/Register";
@@ -14,10 +11,9 @@ import Dashboard from "./pages/Dashboard";
 // import MainComponent from "./components/Hospital";
 // import ArticleList from "./components/Hospital";
 import MedicalJournalsList from "./components/Hospital";
-
+import { RequireAuth } from "./components/RequireAuth";
 
 export default function App() {
-
   return (
     <>
       <Routes>
@@ -28,8 +24,11 @@ export default function App() {
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/reset-link" element={<ResetLink />} />
         <Route path="/reset-password" element={<ResetPassword />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/hospital" element={<MedicalJournalsList/>} />
+
+        <Route element={<RequireAuth />}>
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Route>
+        <Route path="/hospital" element={<MedicalJournalsList />} />
       </Routes>
     </>
   );

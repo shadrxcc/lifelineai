@@ -36,7 +36,8 @@ const Reminder = ({ onClose }: ReminderProps) => {
                 <p id="cancel-text">Cancel</p>
               </button>
 
-              <button onClick={onClose}
+              <button
+                onClick={onClose}
                 id="agree"
                 className="px-6 rounded-lg text-white text-xs font-semibold leading-4 py-2"
               >

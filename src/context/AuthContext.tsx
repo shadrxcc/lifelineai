@@ -7,7 +7,15 @@ interface AuthContextType {
   isLoggedIn: boolean;
   login: (user_info: userInfoType) => void;
   logout: () => void;
+  auth: AuthType; // Use the AuthType here
+  setAuth: React.Dispatch<React.SetStateAction<AuthType>>;
 }
+
+interface AuthType {
+  user: userInfoType | null;
+  accessToken?: string; // Add this if you're storing an access token
+}
+
 
 type Props = {
   children: React.ReactNode;
@@ -18,6 +26,11 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 const AuthProvider: React.FC<Props> = ({ children }) => {
   const [user, setUser] = useState<userInfoType | null>(null);
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const [auth, setAuth] = useState<AuthType>({
+    user: null,
+    accessToken: undefined
+  });
+  
   const navigate = useNavigate();
 
   const login = (user_info: userInfoType) => {
@@ -46,7 +59,7 @@ const AuthProvider: React.FC<Props> = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, isLoggedIn, logout }}>
+    <AuthContext.Provider value={{ user, login, auth, setAuth, isLoggedIn, logout }}>
       {children}
     </AuthContext.Provider>
   );

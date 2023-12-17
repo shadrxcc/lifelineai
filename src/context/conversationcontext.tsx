@@ -107,8 +107,6 @@ const ConversationProvider: React.FC<Props> = ({ children }) => {
     axios
       .post(url, data, { headers: headers })
       .then((response) => {
-        console.log(response);
-
         if (indexToUpdate !== undefined) {
           setIsLoading(false);
           setChatLog((prevChat) =>

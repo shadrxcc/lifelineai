@@ -32,7 +32,7 @@ const InputMessage = ({
         {isLoading ? (
           <div className="bg-[#F9F9F9] mb-9 flex items-center gap-x-2 py-3 px-4">
             <img id="loading" src="/loader.svg" alt="" />
-            <p className="text-[#141414]">Generate message..</p>
+            <p className="text-[#141414]">Generating message..</p>
           </div>
         ) : (
           <div className="flex items-center mb-9 gap-x-2  rounded-lg w-full bottom-0 m-auto justify-between px-4 py-3 border border-[#E7E7E7]">

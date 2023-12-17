@@ -57,7 +57,7 @@ html body {
     @apply cursor-not-allowed bg-gray-400 duration-500;
   }
 }
-
+.prompt:hover,
 .period {
   border-radius: var(--corner-radius-80, 8px);
   background: var(--blue-10, rgba(32, 91, 241, 0.1));

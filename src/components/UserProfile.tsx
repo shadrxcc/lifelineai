@@ -12,9 +12,9 @@ const UserProfile = ({
   turnoff
 }: {
   reminder: string;
-  username: string;
+  username?: string;
   className?: string;
-  useremail: string;
+  useremail?: string;
   name: string;
   offReminder?: () => void;
   onReminder?: () => void;

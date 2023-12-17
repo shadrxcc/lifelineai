@@ -11,7 +11,7 @@ import { useAuth } from "../context/AuthContext";
 
 const Login = () => {
   const navigate = useNavigate();
-  const { setAuth, login } = useAuth();
+  const { setAuth } = useAuth();
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [userData, setUserData] = useState<LoginDataType>({
@@ -45,17 +45,12 @@ const Login = () => {
 
         if (res.status === 200 || res.status === 201) {
           const { user_info } = res.data;
-          console.log(res.data);
           const accessToken = res.data.access_token;
           setAuth((prevAuth) => ({
             ...prevAuth,
             user: user_info,
             accessToken: accessToken,
           }));
-          login(user_info);
-          console.log(res.data.user_info);
-
-          localStorage.setItem("userInfo", JSON.stringify(user_info));
           setUserData({
             email: "",
             password: "",

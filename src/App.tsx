@@ -12,6 +12,7 @@ import Dashboard from "./pages/Dashboard";
 // import ArticleList from "./components/Hospital";
 import MedicalJournalsList from "./components/Hospital";
 import { RequireAuth } from "./components/RequireAuth";
+import PersistLogin from "./components/PersistLogin";
 
 export default function App() {
   return (
@@ -25,8 +26,10 @@ export default function App() {
         <Route path="/reset-link" element={<ResetLink />} />
         <Route path="/reset-password" element={<ResetPassword />} />
 
-        <Route element={<RequireAuth />}>
-          <Route path="/dashboard" element={<Dashboard />} />
+        <Route element={<PersistLogin />}>
+          <Route element={<RequireAuth />}>
+            <Route path="/dashboard" element={<Dashboard />} />
+          </Route>
         </Route>
         <Route path="/hospital" element={<MedicalJournalsList />} />
       </Routes>

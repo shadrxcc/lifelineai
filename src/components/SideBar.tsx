@@ -1,10 +1,11 @@
-
 import { useAuth } from "../context/AuthContext";
 import CreditCard from "./CreditCard";
 import TourDialog from "./TourDialog";
-
+import { useContext } from "react";
 import { shortenText } from "../utils/shortentext";
-import articles from '../data/articles.json'
+import articles from "../data/articles.json";
+import History from "./history";
+import { ConversationContext } from "../context/conversationcontext";
 
 const SideBar = ({
   step2,
@@ -24,35 +25,11 @@ const SideBar = ({
   CloseTour?: () => void;
   clearchat?: () => void;
   closeMenu?: () => void;
+  question?: string;
+  onClick?: () => void;
 }) => {
   const { logout } = useAuth();
-
-  // const [journals, setJournals] = useState<Journal[]>([]);
-
-  // const key = import.meta.env.VITE_RAPID_KEY;
-
-  // useEffect(() => {
-  //   const fetchJournals = async () => {
-  //     try {
-  //       const response = await axios.get(
-  //         "https://medical-articles-live.p.rapidapi.com/journals/diabetes",
-  //         {
-  //           headers: {
-  //             "X-RapidAPI-Key": `${key}`,
-  //             "X-RapidAPI-Host": "medical-articles-live.p.rapidapi.com",
-  //           },
-  //         }
-  //       );
-  //       const fetchedJournals: Journal[] = response.data;
-
-  //       setJournals(fetchedJournals);
-  //     } catch (error) {
-  //       console.error("Error fetching journals:", error);
-  //     }
-  //   };
-
-  //   fetchJournals();
-  // }, []);
+  const { history, setMessages } = useContext(ConversationContext);
 
   return (
     <div
@@ -79,16 +56,31 @@ const SideBar = ({
                 <img src="/clock.svg" alt="" />
                 <p className="text-sm text-[#40A9FF]">This week</p>
               </div>
-              <span>
-                <p className="text-sm text-[#595959] text-center leading-5">
-                  No search history
-                </p>
-              </span>
-              <div className="prompts hidden text-sm text-[#595959] leading-5 flex-col text-center items-end gap-y-3 px-3">
-                {/* <p className="cursor-pointer">I have a headache and....</p>
-                <p className="cursor-pointer">I have a headache and....</p>
-                <p className="cursor-pointer">I have a headache and....</p> */}
-              </div>
+
+              {history ? (
+                <div className="prompts text-sm text-[#595959] leading-5 flex-col text-center items-end gap-y-3 px-3">
+                  {history.map((el, i) => {
+                    return (
+                      <History
+                        key={i}
+                        question={el.question}
+                        onClick={() =>
+                          setMessages([
+                            { role: "user", content: history[i].question },
+                            { role: "assistant", content: history[i].answer },
+                          ])
+                        }
+                      />
+                    );
+                  })}
+                </div>
+              ) : (
+                <span>
+                  <p className="text-sm text-[#595959] text-center leading-5">
+                    No search history
+                  </p>
+                </span>
+              )}
             </div>
           </div>
 

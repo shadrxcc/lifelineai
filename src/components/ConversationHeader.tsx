@@ -37,15 +37,8 @@ const ConversationHeader: React.FC<ConversationHeaderProps> = ({
   turnoff,
   turnon
 }) => {
-  const authContext = useAuth();
+  const {auth}= useAuth();
 
-  // const [showProfile, setShowProfile] = useState(false);
-
-  if (!authContext) {
-    return null;
-  }
-
-  const { user } = authContext;
 
   return (
     <div
@@ -56,9 +49,9 @@ const ConversationHeader: React.FC<ConversationHeaderProps> = ({
         onClick={profileShow}
         className="flex cursor-pointer gap-x-3 items-center"
       >
-        <UserPfp name={getInitials({ name: user ? user.full_name : "G" })} />
+        <UserPfp name={getInitials({ name: auth ? auth?.user?.full_name : "Guest" })} />
         <div className="flex flex-col gap-y-1">
-          <p className="text-lg leading-5">{user ? user.full_name : "Guest"}</p>
+          <p className="text-lg leading-5">{auth ? auth?.user?.full_name : "Guest"}</p>
           <span className="flex items-center gap-x-1">
             <img src="/active.svg" alt="" />
             <p className="text-sm text-[#00A739]">Active</p>
@@ -82,10 +75,10 @@ const ConversationHeader: React.FC<ConversationHeaderProps> = ({
         <UserProfile turnoff={turnoff} turnon={turnon}
           offReminder={offReminder}
           onReminder={onReminder}
-          name={getInitials({ name: user ? user.full_name : "G" })}
+          name={getInitials({ name: auth ? auth.user?.full_name : "G" })}
           className="absolute top-20 left-24"
-          useremail={user ? user.email : ""}
-          username={user ? user.full_name : "Guest"}
+          useremail={auth ? auth.user?.email : ""}
+          username={auth ? auth.user?.full_name : "Guest"}
           reminder="Drink water"
         />
       ) : null}

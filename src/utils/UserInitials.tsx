@@ -1,5 +1,5 @@
 interface InitialsType {
-  name: string;
+  name?: string;
 }
 
 export const getInitials = ({ name }: InitialsType) => {

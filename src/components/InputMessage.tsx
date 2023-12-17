@@ -1,12 +1,14 @@
 import { InputMessageProps } from "../@types/index.d";
+import { ConversationContext } from "../context/conversationcontext";
+import { useContext } from "react";
 
 const InputMessage = ({
   inputValue,
   setInputValue,
   onSubmit,
-  isLoading,
-  translateText
+  translateText,
 }: InputMessageProps) => {
+  const { isLoading } = useContext(ConversationContext);
   return (
     <div className="space-y-3">
       <div className="flex max-w-[90%] sm:max-w-[80%] mx-auto">
@@ -17,9 +19,7 @@ const InputMessage = ({
           >
             <img src="/translate.svg" alt="" /> Translate
           </button>
-          <button
-            className="flex items-center py-1.5 text-sm leading-5 text-[#585858]  px-3 bg-[#EEE] rounded-lg gap-x-2.5"
-          >
+          <button className="flex items-center py-1.5 text-sm leading-5 text-[#585858]  px-3 bg-[#EEE] rounded-lg gap-x-2.5">
             <img src="/stars.svg" alt="" />
             Improve
           </button>

@@ -1,7 +1,5 @@
 import axios from "axios";
 import React, { createContext, useState } from "react";
-// import { ChatMessage } from "../components/Conversation";
-// import axios from "axios";
 
 export const ConversationContext = React.createContext<ConvoContextType>({
   chatLog: [],
@@ -11,26 +9,19 @@ export const ConversationContext = React.createContext<ConvoContextType>({
   isLoading: false,
   setIsLoading: () => {},
   handleRegenerate: () => {},
-  messages: [],
-  setMessages: () => {},
   handleSubmit: () => {},
   history: [],
   setHistory: () => {},
 });
-
-interface Message {
-  role: string;
-  content: string;
-}
 
 interface HistoryItem {
   question: string;
   answer: string;
 }
 
-interface ChatMessage {
-  role: string;
-  content: string;
+export interface ChatMessage {
+  type: "user" | "bot";
+  message: string;
 }
 
 interface ConvoContextType {
@@ -42,8 +33,6 @@ interface ConvoContextType {
   setHistory: React.Dispatch<React.SetStateAction<HistoryItem[]>>;
   setInputValue: (value: string) => void;
   handleRegenerate?: () => void;
-  messages: Message[];
-  setMessages: React.Dispatch<React.SetStateAction<Message[]>>;
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
@@ -57,37 +46,37 @@ const ConversationProvider: React.FC<Props> = ({ children }) => {
   const [inputValue, setInputValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleRegenerate = () => {
-    const lastUserMessage = messages.find((msg) => msg.role === "user");
-
-    if (lastUserMessage) {
-      const lastBotMessageIndex = messages
-        .slice()
-        .reverse()
-        .findIndex((msg) => msg.role === "assistant");
-
-      if (lastBotMessageIndex !== -1) {
-        const lastBotMessage =
-          messages[messages.length - 1 - lastBotMessageIndex];
-        sendMessage(
-          lastUserMessage.content,
-          lastBotMessageIndex,
-          lastBotMessage.content
-        );
-      } else {
-        sendMessage(lastUserMessage.content);
-      }
-    }
-  };
-
-  const [messages, setMessages] = useState<Message[]>([]);
   const [history, setHistory] = useState<HistoryItem[]>([]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setMessages((prev) => [...prev, { role: "user", content: inputValue }]);
+    setChatLog((prev) => [...prev, { type: "user", message: inputValue }]);
     sendMessage(inputValue);
     setInputValue("");
+  };
+
+  const handleRegenerate = () => {
+    const lastUserMessage = chatLog.find((msg) => msg.type === "user");
+
+    if (lastUserMessage) {
+      const lastBotMessageIndex = chatLog
+        .slice()
+        .reverse()
+        .findIndex((msg) => msg.type === "bot");
+
+      if (lastBotMessageIndex !== -1) {
+        const lastBotMessage =
+          chatLog[chatLog.length - 1 - lastBotMessageIndex];
+        sendMessage(
+          lastUserMessage.message,
+          lastBotMessageIndex,
+          lastBotMessage.message
+        );
+      } else {
+        sendMessage(lastUserMessage.message);
+        setIsLoading(false);
+      }
+    }
   };
 
   const sendMessage = (
@@ -100,13 +89,6 @@ const ConversationProvider: React.FC<Props> = ({ children }) => {
       "Content-type": "application/json",
       Authorization: `Bearer ${import.meta.env.VITE_ACCESS_TOKEN}`,
     };
-
-    const prompt: ChatMessage = {
-      role: "user",
-      content: message,
-    };
-
-    setMessages([...messages, prompt]);
 
     const data = {
       model: "gpt-3.5-turbo-1106",
@@ -124,11 +106,12 @@ const ConversationProvider: React.FC<Props> = ({ children }) => {
 
     axios
       .post(url, data, { headers: headers })
-      .then((response: any) => {
+      .then((response) => {
         console.log(response);
 
         if (indexToUpdate !== undefined) {
-          setMessages((prevChat) =>
+          setIsLoading(false);
+          setChatLog((prevChat) =>
             prevChat.map((msg, index) =>
               index === prevChat.length - 1 - indexToUpdate
                 ? { ...msg, message: response.data.choices[0].message.content }
@@ -136,12 +119,10 @@ const ConversationProvider: React.FC<Props> = ({ children }) => {
             )
           );
         } else {
-          setMessages((prevChat) => [
+          setIsLoading(false);
+          setChatLog((prevChat) => [
             ...prevChat,
-            {
-              role: "assistant",
-              content: response.data.choices[0].message.content,
-            },
+            { type: "bot", message: response.data.choices[0].message.content },
           ]);
           setHistory((prevHistory) => [
             ...prevHistory,
@@ -151,8 +132,6 @@ const ConversationProvider: React.FC<Props> = ({ children }) => {
             },
           ]);
         }
-
-        setIsLoading(false);
       })
       .catch((error) => {
         setIsLoading(false);
@@ -171,8 +150,6 @@ const ConversationProvider: React.FC<Props> = ({ children }) => {
         handleSubmit,
         history,
         setHistory,
-        messages,
-        setMessages,
         handleRegenerate,
       }}
     >

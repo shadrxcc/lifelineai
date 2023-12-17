@@ -16,7 +16,7 @@ export interface UserChatProps {
 export interface BotChatProps {
   message: string;
   like: () => void;
-  dislike: () => void
+  dislike: () => void;
 }
 
 export interface InputMessageProps {
@@ -24,7 +24,7 @@ export interface InputMessageProps {
   setInputValue: (value: string) => void;
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   isLoading: boolean;
-  translateText: () => void;
+  translateText?: () => void;
 }
 
 export interface Journal {

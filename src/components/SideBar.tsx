@@ -29,7 +29,7 @@ const SideBar = ({
   onClick?: () => void;
 }) => {
   const { logout } = useAuth();
-  const { history, setMessages } = useContext(ConversationContext);
+  const { history, setChatLog } = useContext(ConversationContext);
 
   return (
     <div
@@ -57,29 +57,29 @@ const SideBar = ({
                 <p className="text-sm text-[#40A9FF]">This week</p>
               </div>
 
-              {history ? (
-                <div className="prompts text-sm text-[#595959] leading-5 flex-col text-center items-end gap-y-3 px-3">
+              {history.length === 0 ? (
+                <span>
+                  <p className="text-sm text-[#595959] text-center leading-5">
+                    No search history
+                  </p>
+                </span>
+              ) : (
+                <div className="prompts text-sm text-[#595959] leading-5 flex flex-col text-center items-end gap-y-1 px-3">
                   {history.map((el, i) => {
                     return (
                       <History
                         key={i}
                         question={el.question}
                         onClick={() =>
-                          setMessages([
-                            { role: "user", content: history[i].question },
-                            { role: "assistant", content: history[i].answer },
+                          setChatLog([
+                            { type: "user", message: history[i].question },
+                            { type: "bot", message: history[i].answer },
                           ])
                         }
                       />
                     );
                   })}
                 </div>
-              ) : (
-                <span>
-                  <p className="text-sm text-[#595959] text-center leading-5">
-                    No search history
-                  </p>
-                </span>
               )}
             </div>
           </div>

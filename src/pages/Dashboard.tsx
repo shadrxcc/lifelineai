@@ -24,7 +24,7 @@ const Dashboard = () => {
   const [offReminder, setOffReminder] = useState(false);
   const [turnOn, setTurnOn] = useState(false);
 
-  const {setHistory, setMessages} = useContext(ConversationContext);
+  const {setHistory, setChatLog} = useContext(ConversationContext);
 
 
   const offReminderClose = () => {
@@ -81,7 +81,7 @@ const Dashboard = () => {
   };
 
   const clearConvo = () => {
-    setMessages([]);
+    setChatLog([]);
     setHistory([]);
     clearModalClose();
   };

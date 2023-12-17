@@ -7,7 +7,9 @@ export default function History({
 }) {
   return (
     <div onClick={onClick}>
-      <p className="capitalize cursor-pointer prompt">{question}...</p>
+      <p className="capitalize px-2 py-1 cursor-pointer prompt">
+        {question}...
+      </p>
     </div>
   );
 }

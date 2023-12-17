@@ -1,4 +1,3 @@
-// import Confirmation from "./Confirmation";
 import { useContext } from "react";
 import ConversationHeader from "./ConversationHeader";
 import InputMessage from "./InputMessage";
@@ -51,23 +50,14 @@ function Conversation({
   turnoff,
   turnon,
 }: ConversationProps) {
-  const { inputValue, setInputValue, isLoading, handleRegenerate, handleSubmit, messages } =
-    useContext(ConversationContext);
-
-  const handleTranslate = async () => {
-    // const lastUserMessage = chatLog.find((msg) => msg.type === 'user');
-    // if (lastUserMessage) {
-    //   try {
-    //     const translation = await translate(lastUserMessage.message, {
-    //       from: 'en', // Source language (English)
-    //       to: 'es', // Replace 'es' with the user's preferred language code
-    //     });
-    //     setTranslatedMessage(translation.text);
-    //   } catch (error) {
-    //     console.error('Error translating message:', error);
-    //   }
-    // }
-  };
+  const {
+    inputValue,
+    setInputValue,
+    isLoading,
+    handleRegenerate,
+    handleSubmit,
+    chatLog,
+  } = useContext(ConversationContext);
 
   return (
     <>
@@ -89,14 +79,14 @@ function Conversation({
         />
 
         <div className="flex-grow hide-scrollbar px-4 sm:px-6 lg:px-20 py-3 overflow-y-auto">
-          {messages.map((message, index) => (
+          {chatLog.map((message, index) => (
             <div className="flex flex-col my-6 mx-auto gap-y-6" key={index}>
-              {message.role === "assistant" ? (
+              {message.type === "bot" ? (
                 <>
                   <BotChat
                     like={like}
                     dislike={dislike}
-                    message={message.content}
+                    message={message.message}
                   />
                   <div className="flex">
                     <div className="flex m-auto items-center gap-x-7">
@@ -121,13 +111,12 @@ function Conversation({
                   </div>
                 </>
               ) : (
-                <UserChat message={message.content} />
+                <UserChat message={message.message} />
               )}
             </div>
           ))}
         </div>
         <InputMessage
-          translateText={handleTranslate}
           isLoading={isLoading}
           onSubmit={handleSubmit}
           inputValue={inputValue}

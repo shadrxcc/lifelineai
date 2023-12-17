@@ -64,7 +64,7 @@ const SideBar = ({
                   </p>
                 </span>
               ) : (
-                <div className="prompts text-sm text-[#595959] leading-5 flex flex-col text-center items-end gap-y-1 px-3">
+                <div className="prompts   text-sm text-[#595959] leading-5 flex flex-col text-center items-end gap-y-1 px-3">
                   {history.map((el, i) => {
                     return (
                       <History
